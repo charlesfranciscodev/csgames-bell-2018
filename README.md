@@ -32,4 +32,5 @@ Remove images:
 * POST /bell/authentication
 
 ## References
-* https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version
+* [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)
+* [Microservices with Docker, Flask, and React](https://github.com/testdrivenio/testdriven-app-2.4)
