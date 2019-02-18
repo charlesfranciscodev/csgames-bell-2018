@@ -1,0 +1,320 @@
+[
+  {
+    "id": "2fede4e2-9574-48f0-b110-c9c18ff32621",
+    "username": "WonderfulProudKangaroo",
+    "password": "Password_1",
+    "hashedPassword": "68b60631839c808e562bf5fc3c0a7c2fa2bfc5c1f7b63e6f6c861cbdd8683adc",
+    "birthdate": "1970-03-08",
+    "profiles": [
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      }
+    ]
+  },
+  {
+    "id": "8d52d7fc-3fe8-41ae-a903-695f1cc24398",
+    "username": "WetAngryOctopus",
+    "password": "Password_2",
+    "hashedPassword": "b959b1fbc49ee3c41b6815db7e827fc42646f95f713da0cc0b949882bc448fbf",
+    "birthdate": "1973-08-27",
+    "profiles": [
+      {
+        "id": "3",
+        "name": "Vaporwave Lover"
+      }
+    ]
+  },
+  {
+    "id": "a4187819-5d80-448d-bf6d-7a820e4231f1",
+    "username": "WeakElegantTiger",
+    "password": "Password_3",
+    "hashedPassword": "66c50be2754a27c561d7f0a035c52aab64ad3d4e41d0aff9b1c44fa1883c3ea3",
+    "birthdate": "1982-05-02",
+    "profiles": [
+      {
+        "id": "4",
+        "name": "Deaf"
+      },
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "5",
+        "name": "Hipster"
+      }
+    ]
+  },
+  {
+    "id": "cf44bf5c-0cca-45f1-a47a-a13b6c859054",
+    "username": "YoungProudBandicoot",
+    "password": "Password_4",
+    "hashedPassword": "973faaff5f9859cd1c8145cf1f4b1aa0833be900da1916ecf168853e95362054",
+    "birthdate": "1960-09-29",
+    "profiles": [
+      {
+        "id": "3",
+        "name": "Vaporwave Lover"
+      }
+    ]
+  },
+  {
+    "id": "7981a3aa-60a3-4e57-85f9-0213b0a21de6",
+    "username": "PoliteLoudRhinoceros",
+    "password": "Password_5",
+    "hashedPassword": "ee8774bf7ce1cf363655bcf36a3f5b4adbf987768aaa850a41d3ec0bddb7daf2",
+    "birthdate": "1987-11-11",
+    "profiles": [
+      {
+        "id": "2",
+        "name": "Mac User"
+      },
+      {
+        "id": "6",
+        "name": "Robot"
+      }
+    ]
+  },
+  {
+    "id": "9c1d2a59-5afe-4441-b432-f0a19948a2a6",
+    "username": "HelplessBeautifulAlpaca",
+    "password": "Password_6",
+    "hashedPassword": "40462fd693d3f65c18d742416f912b51aae66b62965f9cbc04b569599de27841",
+    "birthdate": "1997-12-15",
+    "profiles": [
+      {
+        "id": "3",
+        "name": "Vaporwave Lover"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      }
+    ]
+  },
+  {
+    "id": "3bbd81a7-d93c-48b7-a41b-4b63f67f6738",
+    "username": "WetGreatPanda",
+    "password": "Password_7",
+    "hashedPassword": "f7512261984503dd78a79ecb517549a8867a4c9a38c3adae2614c04c6d16d374",
+    "birthdate": "1978-11-19",
+    "profiles": [
+      {
+        "id": "2",
+        "name": "Mac User"
+      }
+    ]
+  },
+  {
+    "id": "26a13fa7-2fe9-4123-b5e0-e5889886a8e6",
+    "username": "LazyModernWeasel",
+    "password": "Password_8",
+    "hashedPassword": "586c4d070d3a8c597e032c97cd17d6229dea192ab241e811a651e2cff9f3a7d0",
+    "birthdate": "1995-06-28",
+    "profiles": [
+      {
+        "id": "6",
+        "name": "Robot"
+      },
+      {
+        "id": "4",
+        "name": "Deaf"
+      }
+    ]
+  },
+  {
+    "id": "6ec24f74-a52d-43e7-a5f5-21420f537a44",
+    "username": "GlamorousFluffyChameleon",
+    "password": "Password_9",
+    "hashedPassword": "d1fdc211f5414e6974317921f57c89e9a7c41def55d3fc7befa436efb8ac7c04",
+    "birthdate": "1989-06-21",
+    "profiles": []
+  },
+  {
+    "id": "6d76ed65-141b-4045-b632-58a546d49ceb",
+    "username": "DeliciousCalmParakeet",
+    "password": "Password_10",
+    "hashedPassword": "a2b716ccad2b584fbc99265955016582e4e1c0bbb5f9f01099fb322a478dfe0e",
+    "birthdate": "2001-11-24",
+    "profiles": [
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "6",
+        "name": "Robot"
+      }
+    ]
+  },
+  {
+    "id": "f4996ed6-fb46-4cf4-9bf8-66a5e20c95d2",
+    "username": "GreatGlamorousHedgehog",
+    "password": "Password_11",
+    "hashedPassword": "5ba6e380f1745566cf56aac44dfcdd1aec10eb92fb2dcc33bf98f15ef3ed83b9",
+    "birthdate": "1991-07-13",
+    "profiles": [
+      {
+        "id": "7",
+        "name": "Uniped"
+      },
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "4",
+        "name": "Deaf"
+      }
+    ]
+  },
+  {
+    "id": "4ddedcde-5841-4f1c-b43c-0fb169ef2e45",
+    "username": "GrumpyNiceSnake",
+    "password": "Password_12",
+    "hashedPassword": "63fb421bbbf5dd374981a30419533e76d2c3232fa28cc99a45f249b4c769d6ac",
+    "birthdate": "1959-03-30",
+    "profiles": [
+      {
+        "id": "8",
+        "name": "3D Enthusiast"
+      }
+    ]
+  },
+  {
+    "id": "59dc528a-073f-4f5d-abc6-179357c631f7",
+    "username": "NiceSweetWombat",
+    "password": "Password_13",
+    "hashedPassword": "d0518478a2fbfe99358a10cfeef05e3518436553a70ab10d1837352816ea493d",
+    "birthdate": "1982-04-24",
+    "profiles": [
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      },
+      {
+        "id": "5",
+        "name": "Hipster"
+      }
+    ]
+  },
+  {
+    "id": "c3d012d1-5f82-4445-b62d-1a31a553aacb",
+    "username": "MysteriousFatElephant",
+    "password": "Password_14",
+    "hashedPassword": "9d895208efe9298512ad15622350c2bbcf5730cb5733ebe055c3febc9d94c1d8",
+    "birthdate": "1961-05-26",
+    "profiles": [
+      {
+        "id": "9",
+        "name": "Simpsons Enthusiast"
+      }
+    ]
+  },
+  {
+    "id": "893e79f5-3683-42fb-bed3-fef2684492d3",
+    "username": "WonderfulRapidKangaroo",
+    "password": "Password_15",
+    "hashedPassword": "4d8873c1f53e79c2df656d67e3a34704a0ba175e8f74b8eee260975190553862",
+    "birthdate": "1966-03-12",
+    "profiles": [
+      {
+        "id": "7",
+        "name": "Uniped"
+      }
+    ]
+  },
+  {
+    "id": "6de3cb8f-f38e-4040-887e-c5633a262c37",
+    "username": "FastGentleBeaver",
+    "password": "Password_16",
+    "hashedPassword": "72d8f9d4bb502ac6441445a240dde68dc45640a246408efd129f99c1463a5b9c",
+    "birthdate": "1999-07-23",
+    "profiles": []
+  },
+  {
+    "id": "64c19c40-3886-4907-aa95-d6724ddad3e2",
+    "username": "ObnoxiousMysteriousBonobo",
+    "password": "Password_17",
+    "hashedPassword": "78e460368390ba21a8831d730133846e9282ff8d7e81d9ea9336732a7e8fcdc1",
+    "birthdate": "1995-05-15",
+    "profiles": [
+      {
+        "id": "3",
+        "name": "Vaporwave Lover"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      }
+    ]
+  },
+  {
+    "id": "63cc0b19-6e15-4b71-9a8a-e6c6233ca05d",
+    "username": "AggressiveModernWallaby",
+    "password": "Password_18",
+    "hashedPassword": "a18e07c4fdf3f490a47471c1f0852c92a4d74d2f4512de0eb43741363a5d4c8a",
+    "birthdate": "2000-02-07",
+    "profiles": [
+      {
+        "id": "8",
+        "name": "3D Enthusiast"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      },
+      {
+        "id": "5",
+        "name": "Hipster"
+      }
+    ]
+  },
+  {
+    "id": "fd47e99c-7fec-4266-949b-bf5563d8a5c3",
+    "username": "ClumsyChubbyHippopotamus",
+    "password": "Password_19",
+    "hashedPassword": "c2a210d6bfae29dd13e8308ea66953afab23c6ab75d33363fa466d00d0a655a3",
+    "birthdate": "1977-01-12",
+    "profiles": [
+      {
+        "id": "1",
+        "name": "Pirate"
+      },
+      {
+        "id": "3",
+        "name": "Vaporwave Lover"
+      },
+      {
+        "id": "2",
+        "name": "Mac User"
+      }
+    ]
+  },
+  {
+    "id": "3d5dcb67-93c3-489b-b45b-907700c1807b",
+    "username": "WorriedCarefulHamster",
+    "password": "Password_20",
+    "hashedPassword": "4a761d2ab6a6df10ea20bf32bc9a3c9cf49d143eec919e19b0c0832cd2037538",
+    "birthdate": "1977-03-14",
+    "profiles": [
+      {
+        "id": "8",
+        "name": "3D Enthusiast"
+      },
+      {
+        "id": "9",
+        "name": "Simpsons Enthusiast"
+      }
+    ]
+  }
+]

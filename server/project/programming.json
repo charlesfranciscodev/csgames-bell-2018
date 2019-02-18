@@ -1,0 +1,1109 @@
+{
+  "assets": [
+    {
+      "mediaId": "w9COHCrwNQs",
+      "title": "VULFPECK /// Smile Meditation",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "273",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "NhheiPTdZCw",
+      "title": "Blockhead - The Music Scene",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "321",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "0yoBAZXSN98",
+      "title": "Ryan Paris - Dolce Vita (official video)",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "233",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "rXUpYYYs5jM",
+      "title": "musica egipcia -power of immortality",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "259",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "bxUiHNyO04c",
+      "title": "David Armand - Careless Whisper (Interpretative Dance)",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "245",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Nxrfoar3HfQ",
+      "title": "Quarter-tone Music for Orchestra, No. 1",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "326",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "R_FQU4KzN7A",
+      "title": "Potion Seller",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "187",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "-Cv7T5D03aw",
+      "title": "How Girls Fart vs. How Guys Fart",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "189",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "kpk2tdsPh0A",
+      "title": "SM64 - Watch for Rolling Rocks - 0.5x A Presses (Commentated)",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "1478",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "HPPj6viIBmU",
+      "title": "Star Wars Kid",
+      "profileIds": [
+        "1",
+        "2"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "108",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "txqiwrbYGrs",
+      "title": "David After Dentist",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "118",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "_OBlgSz8sSM",
+      "title": "Charlie bit my finger - again !",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "55",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "MtN1YnoL46Q",
+      "title": "The Duck Song",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "191",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "chdkapHuISI",
+      "title": "Leroy Jenkins - World of Warcraft Epic Raid Fail",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "173",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "ZbRrxw-H6xA",
+      "title": "BBC Life: The Grebes",
+      "profileIds": [
+        "1",
+        "3"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "104",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "TIfAkOBMf5A",
+      "title": "This Aerobic Video Wins Everything (480p Extended)",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "221",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "tvVoY-PTf6s",
+      "title": "Jogging in tune with Take On Me",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "107",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Aiay8I5IPB8",
+      "title": "Nickelback - How You Remind Me [OFFICIAL VIDEO]",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "227",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "06BFsQ_28Co",
+      "title": "Sex With My Car | My Strange Addiction",
+      "profileIds": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "257",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "EdbVL7612wo",
+      "title": "Gordon Ramsay -You F**king Donut!",
+      "profileIds": [
+        "1",
+        "2"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "13",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "5SIQPfeUTtg",
+      "title": "Allez Viens",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "37",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "H3x3-22Gi3g",
+      "title": "The Magikarp Song",
+      "profileIds": [
+        "1",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "235",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Bje_8Y7KUfM",
+      "title": "THE OFFICIAL Sittin On Tha Toilet",
+      "profileIds": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "42",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "f-Lc5R7XBMk",
+      "title": "Homer Toilet Song",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "7",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "MFmr_TZLpS0",
+      "title": "Dr. Jean's Banana Dance - (aka The Guacamole Song) - Dr. Jean's Banana Dance",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "209",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Ct6BUPvE2sM",
+      "title": "PIKOTARO - PPAP (Pen Pineapple Apple Pen) (Long Version) [Official Video]",
+      "profileIds": [
+        "1",
+        "3"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "153",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "zM63XJYnKhk",
+      "title": "Japanese Slippery Stairs Game Show",
+      "profileIds": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "787",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "bmCOjcaiXQM",
+      "title": "YouTube Challenge - I Told My Kids I Ate All Their Halloween Candy 2017",
+      "profileIds": [
+        "1",
+        "2",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "212",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "FuX5_OWObA0",
+      "title": "Rainbow Road",
+      "profileIds": [
+        "2",
+        "3",
+        "4"
+      ],
+      "providerId": "1234",
+      "durationInSeconds": "94",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "EwTZ2xpQwpA",
+      "title": "\"Chocolate Rain\" Original Song by Tay Zonday",
+      "profileIds": [
+        "7",
+        "9"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "292",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "vyE34GHtmb8",
+      "title": "Sitting and Smiling #1",
+      "profileIds": [
+        "2",
+        "8",
+        "9"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "14735",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "KmtzQCSh6xk",
+      "title": "Numa Numa",
+      "profileIds": [
+        "2",
+        "8",
+        "9"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "99",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "TcWPiHjIExA",
+      "title": "Napoleon Dynamite Dance",
+      "profileIds": [
+        "2",
+        "7",
+        "8"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "150",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "aG2Dc2bp4oU",
+      "title": "Twitch Plays Pokemon - Twitch VS Blue (FINAL BATTLE) + Ending",
+      "profileIds": [
+        "2",
+        "7",
+        "9"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "801",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "pR5q0ajW8Ko",
+      "title": "Downfall - Hitler's Outrage (Original Subtitles, Extended Length)",
+      "profileIds": [
+        "2",
+        "7",
+        "8",
+        "9"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "353",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "BBOTCWMhPJs",
+      "title": "homer singing to candy",
+      "profileIds": [
+        "2",
+        "7",
+        "8"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "12",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "dQw4w9WgXcQ",
+      "title": "Rick Astley - Never Gonna Give You Up",
+      "profileIds": [
+        "2",
+        "7",
+        "8"
+      ],
+      "providerId": "3456",
+      "durationInSeconds": "212",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "oF9yHO-UUws",
+      "title": "Whitewoods - Beach Walk",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "133",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "ZZ5LpwO-An4",
+      "title": "HEYYEYAAEYAAAEYAEYAA",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "127",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "gKQOXYB2cd8",
+      "title": "PETE WEBER GOD DAMMIT I DID IT WHO DO YOU THINK YOU ARE",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "27",
+      "licensingWindow": {
+        "start": "2017-01-01T06:00:00Z",
+        "end": "2017-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Lww3_Xfy1Rk",
+      "title": "Super Kripparian 64",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "31",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "4LQEF9Tum_I",
+      "title": "AGDQ 2015 Sneak King Speed Run in 0:19:58 by Kefka14 #AGDQ2015",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "2104",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "cbreFmRDN3E",
+      "title": "Donkey Kong Country 2 - Soundtrack (SPC)",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "4381",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "QgSAOxwr0xE",
+      "title": "Street Fighter - Amazing Comeback",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "58",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "dVLUeXkzUjM",
+      "title": "The Raven in HD by The Alan Parsons Project",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "243",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "xZ4ZztI5y6I",
+      "title": "Crazy Chinese man plays the drums on a keyboard (Travis Barker)",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "54",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "sIlNIVXpIns",
+      "title": "Look at this graph",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "10",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "lAl28d6tbko",
+      "title": "Will It Blend? - iPad",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "101",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "V5cOvyDpWfM",
+      "title": "Fergie Performs The U.S. National Anthem / 2018 NBA All-Star Game",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "140",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "rTfa-9aCTYg",
+      "title": "SUNDAY SCHOOL",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "189",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "KyucG76N9PY",
+      "title": "PUDDI PUDDI",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "895",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "u-fYWAwc8Q0",
+      "title": "Fateful Findings Best Scenes",
+      "profileIds": [
+        "4",
+        "6"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "1084",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "FTQbiNvZqaY",
+      "title": "Toto - Africa (Video)",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "275",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "UpQho_e553Q",
+      "title": "\"Riverdance, the Show\" 1995, \"Firedance\"",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "325",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "O3rpmctmC_M",
+      "title": "Look At My Horse Song! \\{HD\\}",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "125",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "fUyU3lKzoio",
+      "title": "Hey Buddy, Can You Give Me a Hand?",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "46",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "lLWEXRAnQd0",
+      "title": "Bob Ross - Island in the Wilderness (Season 29 Episode 1)",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "1510",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "FZ1st1Vw2kY",
+      "title": "Tiger Woods 09 - Walk on Water",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "93",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "gXfnrEguhxA",
+      "title": "Darude - Sandstorm (Potato Cover)",
+      "profileIds": [
+        "5",
+        "6"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "233",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "vTIIMJ9tUc8",
+      "title": "Daler Mehndi - Tunak Tunak Tun Video",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "257",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "ketCUtFpzNo",
+      "title": "$10,000 DOG VS. $1 DOG",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "176",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "JozAmXo2bDE",
+      "title": "Learn to Fly - Foo Fighters Rockin1000 Official Video",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "449",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "fuEJWmxWkKw",
+      "title": "REBOOT - Intro",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "68",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "UYrkQL1bX4A",
+      "title": "LazyTown song - Cooking By The Book",
+      "profileIds": [
+        "4",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "97",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "ad_higXixRA",
+      "title": "Billionaire Bill Gates Guesses Grocery Store Prices",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "260",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "OQSNhk5ICTI",
+      "title": "Yosemitebear Mountain Double Rainbow 1-8-10",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "210",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "q6EoRBvdVPQ",
+      "title": "Yee",
+      "profileIds": [
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "10",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "CgHW02YF50s",
+      "title": "When Mama Isn't Home / When Mom Isn't Home ORIGINAL (the Oven Kid) Timmy Trumpet - Freaks",
+      "profileIds": [
+        "4",
+        "6"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "16",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "O_HyZ5aW76c",
+      "title": "Bill O'Reilly Goes Nuts",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "95",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "yt-dmCrVi1w",
+      "title": "Stupid Human Gum Trick On Letterman",
+      "profileIds": [
+        "4",
+        "5",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "114",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    },
+    {
+      "mediaId": "Iy71djXqf3E",
+      "title": "[Robot Wars 3rd Wars] Hypno Disc vs. Chaos 2 [HD 1080p]",
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "providerId": "2345",
+      "durationInSeconds": "172",
+      "licensingWindow": {
+        "start": "2018-01-01T06:00:00Z",
+        "end": "2019-12-31T10:00:00Z"
+      }
+    }
+  ],
+  "providers": [
+    {
+      "refreshRateInSeconds": 2,
+      "profileIds": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "id": "1234",
+      "name": "HBO"
+    },
+    {
+      "refreshRateInSeconds": 3,
+      "profileIds": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "id": "2345",
+      "name": "CTV"
+    },
+    {
+      "refreshRateInSeconds": 2,
+      "profileIds": [
+        "2",
+        "7",
+        "8",
+        "9"
+      ],
+      "id": "3456",
+      "name": "LVNTR"
+    }
+  ]
+}
