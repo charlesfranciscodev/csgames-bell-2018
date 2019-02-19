@@ -30,6 +30,7 @@ Remove images:
 
 ## Completed API Routes
 * POST /bell/authentication
+* PUT /bell/authentication
 
 ## References
 * [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)
