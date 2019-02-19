@@ -3,6 +3,8 @@ import os
 from flask import Flask
 from flask_cors import CORS
 
+from project.api.bell import bell_blueprint
+
 cors = CORS()
 
 
@@ -18,8 +20,7 @@ def create_app(script_info=None):
     cors.init_app(app)
 
     # register blueprints
-    from project.api.auth import auth_blueprint
-    app.register_blueprint(auth_blueprint)
+    app.register_blueprint(bell_blueprint)
 
     # shell context for flask cli
     @app.shell_context_processor
