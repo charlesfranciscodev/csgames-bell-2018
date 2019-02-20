@@ -1,4 +1,4 @@
-# CSGames Bell 2018 - Practice
+# CSGames Bell 2018
 
 This repo is a web application project and uses Docker, Flask and React. 
 
