@@ -6,3 +6,4 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration"""
+     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')

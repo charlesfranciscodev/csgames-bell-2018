@@ -1,9 +1,13 @@
 import os
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 from project.api.bell import bell_blueprint
+
+# instantiate the db
+db = SQLAlchemy()
 
 cors = CORS()
 
@@ -17,6 +21,7 @@ def create_app(script_info=None):
     app.config.from_object(app_settings)
 
     # set up extensions
+    db.init_app(app)
     cors.init_app(app)
 
     # register blueprints
@@ -25,6 +30,6 @@ def create_app(script_info=None):
     # shell context for flask cli
     @app.shell_context_processor
     def ctx():
-        return {'app': app}
+        return {'app': app, 'db': db}
 
     return app

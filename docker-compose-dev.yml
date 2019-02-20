@@ -12,6 +12,18 @@ services:
     environment:
       - FLASK_ENV=development
       - APP_SETTINGS=project.config.DevelopmentConfig
+    depends_on:
+      - database
+
+  database:
+    build:
+      context: ./services/users/project/db
+      dockerfile: Dockerfile
+    ports:
+      - 5436:5432
+    environment:
+      # - POSTGRES_USER=postgres
+      # - POSTGRES_PASSWORD=postgres
 
   client:
     build:
