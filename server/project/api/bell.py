@@ -9,13 +9,6 @@ from project import db
 bell_blueprint = Blueprint("bell", __name__, template_folder="./templates")
 
 
-# def asset_matches_id(asset, profile_ids):
-#     for profile_id in asset["profileIds"]:
-#         if profile_id in profile_ids:
-#             return True
-#     return False
-
-
 @bell_blueprint.route("/app/ping")
 def ping_pong():
     return jsonify({
@@ -63,39 +56,40 @@ def bell_authentication():
     return jsonify(response)
 
 
-# @bell_blueprint.route("/bell/assets")
-# def bell_assets():
-#     response = []
-#     profile_names = profiles = request.args.getlist("profiles")
-#     profile_data = get_profile_data()
-#     profile_ids = []
-#     for name in profile_names:
-#         profile_ids.append(profile_data[name])
-#     prog_data = get_prog_data()
-#     assets = prog_data["assets"]
-#     providers = prog_data["providers"]
+@bell_blueprint.route("/bell/assets")
+def bell_assets():
+    response = []
+    profile_names = request.args.getlist("profiles")
+    all_assets = Asset.query.all()
+    assets = []
+    for asset in all_assets:
+        for profile in asset.profiles:
+            if profile.name in profile_names:
+                assets.append(asset)
+                break
 
-#     for asset in assets:
-#         start = dateutil.parser.parse(asset["licensingWindow"]["start"])
-#         end = dateutil.parser.parse(asset["licensingWindow"]["end"])
-#         current = datetime.datetime.utcnow().replace(
-#             tzinfo=datetime.timezone.utc
-#         )
-#         match = asset_matches_id(asset, profile_ids)
-#         if start > current or end < current or not match:
-#             continue
-#         provider_name, refresh_rate_in_seconds = get_provider_info(
-#             providers,
-#             asset["providerId"]
-#         )
-#         asset_dict = {
-#             "title": asset["title"],
-#             "providerId": provider_name,
-#             "refreshRateInSeconds": refresh_rate_in_seconds,
-#             "media": {
-#                 "mediaId": asset["mediaId"],
-#                 "durationInSeconds": asset["durationInSeconds"]
-#             }
-#         }
-#         response.append(asset_dict)
-#     return jsonify(response)
+    for asset in assets:
+        start = asset.licensing_window_start.replace(
+            tzinfo=datetime.timezone.utc
+        )
+        end = asset.licensing_window_end.replace(
+            tzinfo=datetime.timezone.utc
+        )
+        current = datetime.datetime.utcnow().replace(
+            tzinfo=datetime.timezone.utc
+        )
+        if start > current or end < current:
+            continue
+        provider =  Provider.query.filter_by(
+            provider_id=asset.provider_id).first()
+        asset_dict = {
+            "title": asset.title,
+            "providerId": provider.name,
+            "refreshRateInSeconds": provider.refresh_rate_in_seconds,
+            "media": {
+                "mediaId": asset.media_id,
+                "durationInSeconds": asset.duration_in_seconds
+            }
+        }
+        response.append(asset_dict)
+    return jsonify(response)
