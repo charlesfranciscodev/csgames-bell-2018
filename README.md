@@ -15,6 +15,14 @@ Run the containers:
 
 `docker-compose -f docker-compose-dev.yml up -d`
 
+Create the database:
+
+`docker-compose -f docker-compose-dev.yml exec server python manage.py recreate_db`
+
+Seed the database:
+
+`docker-compose -f docker-compose-dev.yml exec server python manage.py seed_db`
+
 ## Other Commands
 
 To stop the containers:
@@ -24,6 +32,11 @@ To stop the containers:
 Remove images:
 
 `docker rmi $(docker images -q)`
+
+## Postgres
+Want to access the database via psql?
+
+`docker-compose -f docker-compose-dev.yml exec database psql -U postgres`
 
 ## Completed User Stories
 * [BP:3] En tant qu'opérateur, je peux exécuter un seul script bash pour démarrer à la fois le serveur et le client

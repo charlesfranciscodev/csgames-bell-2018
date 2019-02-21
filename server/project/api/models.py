@@ -36,41 +36,33 @@ provider_profile = db.Table("provider_profile",
 
 
 class User(db.Model):
+    __tablename__ = "user"
     user_id = db.Column(db.String(36), primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
     hashed_password = db.Column(db.String(64), nullable=False)
     birthdate = db.Column(db.DateTime, nullable=False)
     profiles = db.relationship(
-        "Profile", secondary=user_profile lazy="subquery",
-        backref=db.backref("profiles", lazy=True)
+        "Profile", secondary=user_profile, lazy="subquery",
+        backref=db.backref("user_profiles", lazy=True)
     )
-
-    def __init__(self, user_id, username, hashed_password, birthdate, profiles):
-        self.user_id = user_id
-        self.username = username
-        self.hashed_password = hashed_password
-        self.birthdate = birthdate
-        self.profiles = profiles
 
 
 class Profile(db.Model):
+    __tablename__ = "profile"
     profile_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, profile_id, name):
-        self.profile_id = profile_id
-        self.name = name
-
 
 class Asset(db.Model):
+    __tablename__ = "asset"
     media_id = db.Column(db.String(11), primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     profiles = db.relationship(
-        "Profile", secondary=asset_profile lazy="subquery",
-        backref=db.backref("profiles", lazy=True)
+        "Profile", secondary=asset_profile, lazy="subquery",
+        backref=db.backref("asset_profiles", lazy=True)
     )
     provider_id = db.Column(
-        db.Integer, db.ForeignKey("provider_id"), nullable=False
+        db.Integer, db.ForeignKey("provider.provider_id"), nullable=False
     )
     duration_in_seconds = db.Column(db.Integer, nullable=False)
     licensing_window_start = db.Column(db.DateTime, nullable=False)
@@ -78,11 +70,12 @@ class Asset(db.Model):
 
 
 class Provider(db.Model):
+    __tablename__ = "provider"
     refresh_rate_in_seconds = db.Column(db.Integer, nullable=False)
     profiles = db.relationship(
-        "Profile", secondary=provider_profile lazy="subquery",
-        backref=db.backref("profiles", lazy=True)
+        "Profile", secondary=provider_profile, lazy="subquery",
+        backref=db.backref("provider_profiles", lazy=True)
     )
     provider_id = db.Column(db.Integer, primary_key=True)
-
+    name = db.Column(db.String(255), nullable=False)
     assets = db.relationship("Asset", backref="provider")
