@@ -98,3 +98,19 @@ def bell_alerts():
         "message": "Yo mamma so fat even penguins are jealous of the way she waddles."
     }
     return jsonify(response)
+
+
+@bell_blueprint.route(
+    "/bell/hidden/provider/<int:provider_id>/refreshRate", methods=["PUT"]
+)
+def bell_hidden_provider_refresh_rate(provider_id):
+    response = {}
+    request_json = request.get_json()
+    if "refreshRateInSeconds" not in request_json:
+        response["message"] = "Missing refreshRateInSeconds key in request body"
+        return jsonify(response), 400
+    provider = Provider.query.filter_by(provider_id=provider_id).first()
+    provider.refresh_rate_in_seconds = request_json["refreshRateInSeconds"]
+    db.session.commit()
+    response["message"] = "Update successful"
+    return jsonify(response)
