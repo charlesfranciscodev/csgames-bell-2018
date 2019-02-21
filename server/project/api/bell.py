@@ -88,3 +88,13 @@ def bell_assets():
         response.append(asset_dict)
     
     return jsonify(response)
+
+
+@bell_blueprint.route("/bell/alerts")
+def bell_alerts():
+    response = {
+        "alertId": "2d4be346-120c-11e8-b642-0ed5f89f718b",
+        "title": "Emergency Alert",
+        "message": "Yo mamma so fat even penguins are jealous of the way she waddles."
+    }
+    return jsonify(response)

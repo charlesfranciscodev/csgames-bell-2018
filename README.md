@@ -45,6 +45,7 @@ Want to access the database via psql?
 * POST /bell/authentication
 * PUT /bell/authentication
 * GET /bell/assets?profiles=X&profiles=Y
+* GET /bell/alerts
 
 ## References
 * [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)
