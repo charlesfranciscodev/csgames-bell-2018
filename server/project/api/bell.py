@@ -69,15 +69,9 @@ def bell_assets():
                 break
 
     for asset in assets:
-        start = asset.licensing_window_start.replace(
-            tzinfo=datetime.timezone.utc
-        )
-        end = asset.licensing_window_end.replace(
-            tzinfo=datetime.timezone.utc
-        )
-        current = datetime.datetime.utcnow().replace(
-            tzinfo=datetime.timezone.utc
-        )
+        start = asset.licensing_window_start
+        end = asset.licensing_window_end
+        current = datetime.datetime.utcnow()
         if start > current or end < current:
             continue
         provider =  Provider.query.filter_by(
