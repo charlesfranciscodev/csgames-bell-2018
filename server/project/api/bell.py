@@ -3,6 +3,9 @@ import datetime
 
 from flask import Blueprint, jsonify, request, render_template
 
+from project.api.models import User, Profile, Asset, Provider
+from project import db
+
 bell_blueprint = Blueprint("bell", __name__, template_folder="./templates")
 
 
@@ -33,30 +36,29 @@ def bell_authentication():
     if request.method == "POST":
         username = request_json["username"]
         password = request_json["password"].encode("utf-8")
-        users = get_auth_data()
-        user_object = get_user(username)
-        
+        user_object = User.query.filter_by(username=username).first()
         if user_object is None:
             response["message"] = "Invalid username or password"
             return jsonify(response), 401
         hashed_password = hashlib.sha256(password).hexdigest()
-        if hashed_password != user_object["hashedPassword"]:
+        if hashed_password != user_object.hashed_password:
             response["message"] = "Invalid username or password"
             return jsonify(response), 401
     elif request.method == "PUT":
         hashed_credentials = request_json["hashedCredentials"].split(":")
         username = hashed_credentials[0]
         hashed_password = hashed_credentials[1]
-        user_object = get_user(username)
+        user_object = User.query.filter_by(username=username).first()
         if user_object is None:
             response["message"] = "Invalid username or password"
             return jsonify(response), 401
-        update_user_password(username, hashed_password)
+        user_object.hashed_password = hashed_password
+        db.session.commit()
 
-    response["accountId"] = user_object["id"]
+    response["accountId"] = user_object.user_id
     response["profiles"] = []
-    for profile in user_object["profiles"]:
-        response["profiles"].append(profile["name"])
+    for profile in user_object.profiles:
+        response["profiles"].append(profile.name)
     response["hashedCredentials"] = username + ":" + hashed_password
     return jsonify(response)
 

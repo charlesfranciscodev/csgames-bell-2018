@@ -1,6 +1,5 @@
 from project import db
 
-
 user_profile = db.Table("user_profile",
     db.Column(
         "user_id", db.String(36),

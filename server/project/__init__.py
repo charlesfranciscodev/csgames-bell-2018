@@ -4,8 +4,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
-from project.api.bell import bell_blueprint
-
 # instantiate the db
 db = SQLAlchemy()
 
@@ -25,6 +23,7 @@ def create_app(script_info=None):
     cors.init_app(app)
 
     # register blueprints
+    from project.api.bell import bell_blueprint
     app.register_blueprint(bell_blueprint)
 
     # shell context for flask cli
