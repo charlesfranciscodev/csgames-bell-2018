@@ -4,6 +4,7 @@ import datetime
 from flask import Blueprint, jsonify, request, render_template
 
 from project.api.models import User, Profile, Asset, Provider
+from project.api.models import user_profile, asset_profile, provider_profile
 from project import db
 
 bell_blueprint = Blueprint("bell", __name__, template_folder="./templates")
@@ -60,20 +61,19 @@ def bell_authentication():
 def bell_assets():
     response = []
     profile_names = request.args.getlist("profiles")
-    all_assets = Asset.query.all()
-    assets = []
-    for asset in all_assets:
-        for profile in asset.profiles:
-            if profile.name in profile_names:
-                assets.append(asset)
-                break
+    current = datetime.datetime.utcnow()
+    assets = (
+        db.session
+        .query(Asset)
+        .filter(
+            Asset.profiles.any(Profile.name.in_(profile_names)),
+            Asset.licensing_window_start <= current,
+            Asset.licensing_window_end >= current,
+        )
+        .all()
+    )
 
     for asset in assets:
-        start = asset.licensing_window_start
-        end = asset.licensing_window_end
-        current = datetime.datetime.utcnow()
-        if start > current or end < current:
-            continue
         provider =  Provider.query.filter_by(
             provider_id=asset.provider_id).first()
         asset_dict = {
@@ -86,4 +86,5 @@ def bell_assets():
             }
         }
         response.append(asset_dict)
+    
     return jsonify(response)
