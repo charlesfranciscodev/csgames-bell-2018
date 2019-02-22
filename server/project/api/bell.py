@@ -1,4 +1,6 @@
-import sys, hashlib
+import os
+import sys
+import hashlib
 import datetime
 
 from flask import Blueprint, jsonify, request, render_template
@@ -113,4 +115,73 @@ def bell_hidden_provider_refresh_rate(provider_id):
     provider.refresh_rate_in_seconds = request_json["refreshRateInSeconds"]
     db.session.commit()
     response["message"] = "Update successful"
+    return jsonify(response)
+
+
+@bell_blueprint.route("/bell/hidden/asset/<string:asset_id>", methods=["PUT"])
+def bell_hidden_asset(asset_id):
+    response = {}
+    secret_key = request.headers.get("secretKey")
+    request_json = request.get_json()
+
+    # Validation
+    if secret_key != os.environ["HEADER_SECRET_KEY"]:
+        response["message"] = "Invalid header secret key"
+        return jsonify(response), 401
+
+    provider_id = request_json["providerId"]
+    provider = Provider.query.filter_by(provider_id=provider_id).first()
+    if provider is None:
+        response["message"] = "Invalid provider id"
+        return jsonify(response), 404
+    
+    keys = ["title", "licensingWindow", "profileIds", "media"]
+    for key in keys:
+        if key not in request_json:
+            response["message"] = "Missing {} key in request body".format(key)
+            return jsonify(response), 400
+
+    licensing_window = request_json["licensingWindow"]
+    licensing_window_keys = ["start", "end"]
+    for key in licensing_window_keys:
+        if key not in licensing_window:
+            response["message"] = "Missing licensingWindow {} key in request body".format(key)
+            return jsonify(response), 400
+
+    media = request_json["media"]
+    media_keys = ["mediaId", "durationInSeconds"]
+    for key in media_keys:
+        if key not in request_json["media"]:
+            response["message"] = "Missing media {} key in request body".format(key)
+            return jsonify(response), 400
+
+    # Update or create an asset
+    media_id = media["mediaId"]
+    asset = Asset.query.filter_by(media_id=media_id).first()
+    create = False
+    if asset is None:
+        asset = Asset()
+        create = True
+    
+    asset.media_id = media_id
+    asset.title = request_json["title"]
+    
+    asset.provider_id = int(provider_id)
+    asset.duration_in_seconds = media["durationInSeconds"]
+    asset.licensing_window_start = licensing_window["start"]
+    asset.licensing_window_end = licensing_window["end"]
+
+    if (not create):
+        asset.profiles = []
+    for prof_id in request_json["profileIds"]:
+        profile = Profile.query.filter_by(profile_id=prof_id).first()
+        asset.profiles.append(profile)
+
+    if create:
+        db.session.add(asset)
+        response["message"] = "Asset created successfully"
+    else:
+        response["message"] = "Asset updated successfully"
+    db.session.commit()
+
     return jsonify(response)
