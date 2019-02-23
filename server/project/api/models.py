@@ -39,7 +39,7 @@ class User(db.Model):
     user_id = db.Column(db.String(36), primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
     hashed_password = db.Column(db.String(64), nullable=False)
-    birthdate = db.Column(db.DateTime, nullable=False)
+    birthdate = db.Column(db.DateTime)
     profiles = db.relationship(
         "Profile", secondary=user_profile, lazy="subquery",
         backref=db.backref("user_profiles", lazy=True)

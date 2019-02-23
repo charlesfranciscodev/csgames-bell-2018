@@ -128,18 +128,18 @@ def bell_hidden_asset(asset_id):
     if secret_key != os.environ["HEADER_SECRET_KEY"]:
         response["message"] = "Invalid header secret key"
         return jsonify(response), 401
+    
+    keys = ["providerId", "title", "licensingWindow", "profileIds", "media"]
+    for key in keys:
+        if key not in request_json:
+            response["message"] = "Missing {} key in request body".format(key)
+            return jsonify(response), 400
 
     provider_id = request_json["providerId"]
     provider = Provider.query.filter_by(provider_id=provider_id).first()
     if provider is None:
         response["message"] = "Invalid provider id"
         return jsonify(response), 404
-    
-    keys = ["title", "licensingWindow", "profileIds", "media"]
-    for key in keys:
-        if key not in request_json:
-            response["message"] = "Missing {} key in request body".format(key)
-            return jsonify(response), 400
 
     licensing_window = request_json["licensingWindow"]
     licensing_window_keys = ["start", "end"]
@@ -185,3 +185,47 @@ def bell_hidden_asset(asset_id):
     db.session.commit()
 
     return jsonify(response)
+
+
+@bell_blueprint.route("/bell/hidden/account", methods=["POST"])
+def bell_hidden_account():
+    response = {}
+    secret_key = request.headers.get("secretKey")
+    request_json = request.get_json()
+
+    # Validation
+    if secret_key != os.environ["HEADER_SECRET_KEY"]:
+        response["message"] = "Invalid header secret key"
+        return jsonify(response), 401
+
+    keys = ["accountId", "profiles", "username", "password"]
+    for key in keys:
+        if key not in request_json:
+            response["message"] = "Missing {} key in request body".format(key)
+            return jsonify(response), 400
+
+    profile_names = request_json["profiles"]
+    for name in profile_names:
+        profile = Profile.query.filter_by(name=name).first()
+        if profile is None:
+            response["message"] = "Invalid profile name: {}".format(name)
+            return jsonify(response), 400
+
+    user_id = request_json["accountId"]
+    user = User.query.filter_by(user_id=user_id).first()
+    if user is not None:
+        response["message"] = "User already exists"
+        return jsonify(response), 409
+
+    user = User()
+    user.user_id = user_id
+    user.username = request_json["username"]
+    password = request_json["password"].encode("utf-8")
+    user.hashed_password = hashlib.sha256(password).hexdigest()
+    for name in profile_names:
+        profile = Profile.query.filter_by(name=name).first()
+        user.profiles.append(profile)
+    db.session.add(user)
+    db.session.commit()
+    response["message"] = "Account created successfully"
+    return jsonify(response), 201
