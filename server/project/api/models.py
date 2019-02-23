@@ -67,6 +67,20 @@ class Asset(db.Model):
     licensing_window_start = db.Column(db.DateTime, nullable=False)
     licensing_window_end = db.Column(db.DateTime, nullable=False)
 
+    def to_json(self):
+        provider = Provider.query.filter_by(
+            provider_id=self.provider_id).first()
+        asset_dict = {
+            "title": self.title,
+            "providerId": provider.name,
+            "refreshRateInSeconds": provider.refresh_rate_in_seconds,
+            "media": {
+                "mediaId": self.media_id,
+                "durationInSeconds": self.duration_in_seconds
+            }
+        }
+        return asset_dict
+
 
 class Provider(db.Model):
     __tablename__ = "provider"

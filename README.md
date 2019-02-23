@@ -42,13 +42,14 @@ Want to access the database via psql?
 * [BP:3] En tant qu'opérateur, je peux exécuter un seul script bash pour démarrer à la fois le serveur et le client
 
 ## Completed API Routes
-* POST /bell/authentication
-* PUT /bell/authentication
-* GET /bell/assets?profiles=X&profiles=Y
-* GET /bell/alerts
-* PUT /bell/hidden/provider/{:id}/refreshRate
-* PUT /bell/hidden/asset/{:id}
-* POST /bell/hidden/account
+* **POST** `/bell/authentication`
+* **PUT** `/bell/authentication`
+* **GET** `/bell/assets?profiles=X&profiles=Y`
+* **GET** `/bell/alerts`
+* **PUT** `/bell/hidden/provider/{:id}/refreshRate`
+* **PUT** `/bell/hidden/asset/{:id}`
+* **POST** `/bell/hidden/account`
+* **GET** `/bell/search?query=<query>`
 
 ## References
 * [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)

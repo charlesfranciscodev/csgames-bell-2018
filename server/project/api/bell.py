@@ -9,6 +9,8 @@ from project.api.models import User, Profile, Asset, Provider
 from project.api.models import user_profile, asset_profile, provider_profile
 from project import db
 
+from sqlalchemy import or_
+
 bell_blueprint = Blueprint("bell", __name__, template_folder="./templates")
 
 
@@ -76,18 +78,7 @@ def bell_assets():
     )
 
     for asset in assets:
-        provider =  Provider.query.filter_by(
-            provider_id=asset.provider_id).first()
-        asset_dict = {
-            "title": asset.title,
-            "providerId": provider.name,
-            "refreshRateInSeconds": provider.refresh_rate_in_seconds,
-            "media": {
-                "mediaId": asset.media_id,
-                "durationInSeconds": asset.duration_in_seconds
-            }
-        }
-        response.append(asset_dict)
+        response.append(asset.to_json())
     
     return jsonify(response)
 
@@ -229,3 +220,39 @@ def bell_hidden_account():
     db.session.commit()
     response["message"] = "Account created successfully"
     return jsonify(response), 201
+
+
+@bell_blueprint.route("/bell/search")
+def bell_search():
+    response = []
+    search = f"%{request.args.get('query', '')}%"
+
+    assets = (
+        db.session
+        .query(Asset)
+        .join(Provider, Provider.provider_id == Asset.provider_id)
+        .join(asset_profile, asset_profile.c.media_id == Asset.media_id)
+        .join(
+            provider_profile,
+            provider_profile.c.provider_id == Provider.provider_id)
+        .join(
+            Profile,
+            or_(
+                Profile.profile_id == asset_profile.c.profile_id,
+                Profile.profile_id == provider_profile.c.profile_id
+            )
+        )
+        .filter(
+            or_(
+                Asset.title.ilike(search),
+                Provider.name.ilike(search),
+                Profile.name.ilike(search)
+            )
+        )
+        .all()
+    )
+
+    for asset in assets:
+        response.append(asset.to_json())
+
+    return jsonify(response)
