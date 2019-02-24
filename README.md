@@ -55,10 +55,10 @@ Want to access the database via psql?
 
 **GET** `/bell/asset/<:id>`
 
-Returns the asset which corresponds the media id parameter, only if the current date is within the licensing window.
+Returns the asset which corresponds to the media id parameter, only if the current date is within the licensing window.
 
 Response
-```
+```json
 {
   "title" : "My dog Chop",
   "providerId": "HBO",
@@ -80,7 +80,7 @@ Response
 Logs out the currently logged in user.
 
 Response
-```
+```json
 {
   "message": "Logout successful"
 }
