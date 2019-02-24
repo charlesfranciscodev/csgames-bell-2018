@@ -2,6 +2,12 @@
 
 This repo is a web application project and uses Docker, Flask and React. 
 
+## Competition Description
+You are an extraterrestrial life form on Earth without any tools to properly integrate yourself. What's better than news shows and TV shows to open a conversation with humans?
+
+The goal:
+Your task is to create a streaming platform (HTTP REST backend and web frontend) to provide easy access to human content for extraterrestrial life form. You have been given a set of stories with business points for each story. The more business points you complete, the better extraterrestrials will be able to integrate on Earth.
+
 ## Start the server and the client
 `./start.sh`
 
@@ -39,7 +45,7 @@ Want to access the database via psql?
 `docker-compose -f docker-compose-dev.yml exec database psql -U postgres`
 
 ## Completed User Stories
-* [BP:3] En tant qu'opérateur, je peux exécuter un seul script bash pour démarrer à la fois le serveur et le client
+* [BP:3] As an operator, I can run a bash script that starts both the client and the server
 
 ## Completed Required API Routes
 * **POST** `/bell/authentication`
@@ -88,5 +94,5 @@ Response
 200 | Logout successful
 
 ## References
-* [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)
+* [CSGames Bell 2018 - User stories (final - EN version)](https://trello.com/b/pT20udUF/csgames-bell-2018-user-stories-final-en-version)
 * [Microservices with Docker, Flask, and React](https://github.com/testdrivenio/testdriven-app-2.4)
