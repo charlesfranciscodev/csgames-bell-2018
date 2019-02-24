@@ -14,7 +14,10 @@ user_profile = db.Table("user_profile",
 asset_profile = db.Table("asset_profile",
     db.Column(
         "media_id", db.String(11),
-        db.ForeignKey("asset.media_id"), primary_key=True
+        db.ForeignKey(
+            "asset.media_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True,
     ),
     db.Column(
         "profile_id", db.Integer,
@@ -92,3 +95,12 @@ class Provider(db.Model):
     provider_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     assets = db.relationship("Asset", backref="provider")
+
+
+class Session(db.Model):
+    __tablename__ = "session"
+    id = db.Column(db.Integer, primary_key=True)
+    session_id = db.Column(db.String(32), nullable=False)
+    user_id = db.Column(
+        db.String(36), db.ForeignKey("user.user_id"), nullable=False
+    )

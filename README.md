@@ -41,7 +41,7 @@ Want to access the database via psql?
 ## Completed User Stories
 * [BP:3] En tant qu'opérateur, je peux exécuter un seul script bash pour démarrer à la fois le serveur et le client
 
-## Completed API Routes
+## Completed Required API Routes
 * **POST** `/bell/authentication`
 * **PUT** `/bell/authentication`
 * **GET** `/bell/assets?profiles=X&profiles=Y`
@@ -50,6 +50,42 @@ Want to access the database via psql?
 * **PUT** `/bell/hidden/asset/{:id}`
 * **POST** `/bell/hidden/account`
 * **GET** `/bell/search?query=<query>`
+
+## Completed Additional API Routes
+
+**GET** `/bell/asset/<:id>`
+
+Returns the asset which corresponds the media id parameter, only if the current date is within the licensing window.
+
+Response
+```
+{
+  "title" : "My dog Chop",
+  "providerId": "HBO",
+  "refreshRateInSeconds": 5,
+  "media": {
+    "mediaId": "fH5yKr_c62A",
+    "durationInSeconds": 15
+  }
+}
+```
+200 | when the asset is valid
+
+400 | when the media id or licensing window is invalid
+
+---
+
+**POST** `/bell/logout/`
+
+Logs out the currently logged in user.
+
+Response
+```
+{
+  "message": "Logout successful"
+}
+```
+200 | Logout successful
 
 ## References
 * [CSGames Bell 2018 - User stories (final - FR version)](https://trello.com/b/7oxDtTjm/csgames-bell-2018-user-stories-final-fr-version)

@@ -2,10 +2,11 @@ import os
 import sys
 import hashlib
 import datetime
+import uuid
 
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request, render_template, session
 
-from project.api.models import User, Profile, Asset, Provider
+from project.api.models import User, Profile, Asset, Provider, Session
 from project.api.models import user_profile, asset_profile, provider_profile
 from project import db
 
@@ -42,14 +43,35 @@ def bell_authentication():
         if hashed_password != user_object.hashed_password:
             response["message"] = "Invalid username or password"
             return jsonify(response), 401
+        
+        # Create session
+        session["session_id"] = uuid.uuid4().hex
+        session_object = Session()
+        session_object.session_id = session["session_id"]
+        session_object.user_id = user_object.user_id
+        db.session.add(session_object)
+        db.session.commit()
     elif request.method == "PUT":
+        if "session_id" not in session:
+            response["message"] = "Authentication required"
+            return jsonify(response), 401
+
+        user_object = (
+            db.session
+            .query(User)
+            .join(Session, Session.user_id == User.user_id)
+            .filter(Session.session_id == session["session_id"])
+            .first()
+        )
+
+        if user_object is None:
+            response["message"] = "User not found"
+            return jsonify(response), 401
+
         hashed_credentials = request_json["hashedCredentials"].split(":")
         username = hashed_credentials[0]
         hashed_password = hashed_credentials[1]
-        user_object = User.query.filter_by(username=username).first()
-        if user_object is None:
-            response["message"] = "Invalid username or password"
-            return jsonify(response), 401
+        user_object.username = username
         user_object.hashed_password = hashed_password
         db.session.commit()
 
@@ -109,8 +131,8 @@ def bell_hidden_provider_refresh_rate(provider_id):
     return jsonify(response)
 
 
-@bell_blueprint.route("/bell/hidden/asset/<string:asset_id>", methods=["PUT"])
-def bell_hidden_asset(asset_id):
+@bell_blueprint.route("/bell/hidden/asset/<string:media_id>", methods=["PUT"])
+def bell_hidden_asset(media_id):
     response = {}
     secret_key = request.headers.get("secretKey")
     request_json = request.get_json()
@@ -147,26 +169,25 @@ def bell_hidden_asset(asset_id):
             return jsonify(response), 400
 
     # Update or create an asset
-    media_id = media["mediaId"]
     asset = Asset.query.filter_by(media_id=media_id).first()
     create = False
     if asset is None:
         asset = Asset()
         create = True
-    
-    asset.media_id = media_id
-    asset.title = request_json["title"]
-    
-    asset.provider_id = int(provider_id)
-    asset.duration_in_seconds = media["durationInSeconds"]
-    asset.licensing_window_start = licensing_window["start"]
-    asset.licensing_window_end = licensing_window["end"]
 
     if (not create):
         asset.profiles = []
     for prof_id in request_json["profileIds"]:
         profile = Profile.query.filter_by(profile_id=prof_id).first()
         asset.profiles.append(profile)
+
+    asset.media_id = media["mediaId"]
+    asset.title = request_json["title"]
+    
+    asset.provider_id = int(provider_id)
+    asset.duration_in_seconds = media["durationInSeconds"]
+    asset.licensing_window_start = licensing_window["start"]
+    asset.licensing_window_end = licensing_window["end"]
 
     if create:
         db.session.add(asset)
@@ -254,5 +275,44 @@ def bell_search():
 
     for asset in assets:
         response.append(asset.to_json())
+
+    return jsonify(response)
+
+
+@bell_blueprint.route("/bell/asset/<string:media_id>")
+def bell_asset(media_id):
+    response = {}
+    current = datetime.datetime.utcnow()
+
+    asset = (
+        db.session
+        .query(Asset)
+        .filter(
+            Asset.media_id == media_id,
+            Asset.licensing_window_start <= current,
+            Asset.licensing_window_end >= current,
+        )
+        .first()
+    )
+
+    if asset is not None:
+        response = asset.to_json()
+    else:
+        response["message"] = "Invalid media id or licensing window"
+        return jsonify(response), 400
+
+    return jsonify(response)
+
+
+@bell_blueprint.route("/bell/logout", methods=["POST"])
+def bell_logout():
+    response = {
+        "message": "Logout successful"
+    }
+
+    session_id = session.pop("session_id", None)
+    if session_id is not None:
+        db.session.query(Session).filter(Session.session_id == session_id).delete()
+        db.session.commit()
 
     return jsonify(response)
