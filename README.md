@@ -44,6 +44,11 @@ Want to access the database via psql?
 
 `docker-compose -f docker-compose-dev.yml exec database psql -U postgres`
 
+## Client
+Connect to the client
+
+`docker-compose -f docker-compose-dev.yml exec client /bin/sh`
+
 ## Completed User Stories
 * [BP:3] As an operator, I can run a bash script that starts both the client and the server
 
