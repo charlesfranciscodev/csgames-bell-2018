@@ -51,6 +51,7 @@ Connect to the client
 
 ## Completed User Stories
 * [BP:3] As an operator, I can run a bash script that starts both the client and the server
+* [BP:8] As an extraterrestrial user, I can navigate through available assets
 
 ## Completed Required API Routes
 * **POST** `/bell/authentication`
