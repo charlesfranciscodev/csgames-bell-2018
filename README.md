@@ -11,6 +11,8 @@ Your task is to create a streaming platform (HTTP REST backend and web frontend)
 ## Start the server and the client
 `./start.sh`
 
+The client should be acessible at [http://localhost:3007/](http://localhost:3007/)
+
 ## Common Commands
 
 Build the images:
