@@ -35,7 +35,12 @@ class NavBar extends Component {
           <div id="navbarBasicExample" className={"navbar-menu " + (this.state.isActive ? "is-active" : "")}>
             <div className="navbar-start">
               <a className="navbar-item" href="/">
-                Home
+                <span class="icon">
+                  <i class="fas fa-home"></i>
+                </span>
+                <span>
+                  Home
+                </span>
               </a>
             </div>
 
@@ -43,10 +48,20 @@ class NavBar extends Component {
               <div className="navbar-item">
                 <div className="buttons">
                   <a className="button is-primary" href="/">
-                    <strong>Sign up</strong>
+                    <span class="icon">
+                      <i class="fas fa-user-plus"></i>
+                    </span>
+                    <span>
+                      <strong>Sign up</strong>
+                    </span>
                   </a>
                   <a className="button is-light" href="/">
-                    Log in
+                    <span class="icon">
+                      <i class="fas fa-sign-in-alt"></i>
+                    </span>
+                    <span>
+                      Log in
+                    </span>
                   </a>
                 </div>
               </div>
