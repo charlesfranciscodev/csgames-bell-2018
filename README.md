@@ -52,6 +52,7 @@ Connect to the client
 ## Completed User Stories
 * [BP:3] As an operator, I can run a bash script that starts both the client and the server
 * [BP:8] As an extraterrestrial user, I can navigate through available assets
+* [BP:2] As an extraterrestrial user, I am able to search content
 
 ## Completed Required API Routes
 * **POST** `/bell/authentication`
@@ -98,6 +99,19 @@ Response
 }
 ```
 200 | Logout successful
+
+## Profiles
+| profile_id | name |
+|:----------:|:----:|
+| 1 | Pirate |
+| 2 | Mac User |
+| 3 | Vaporwave Lover |
+| 4 | Deaf |
+| 5 | Hipster |
+| 6 | Robot |
+| 7 | Uniped |
+| 8 | 3D Enthusiast |
+| 9 | Simpsons Enthusiast |
 
 ## References
 * [CSGames Bell 2018 - User stories (final - EN version)](https://trello.com/b/pT20udUF/csgames-bell-2018-user-stories-final-en-version)
