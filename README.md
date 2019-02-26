@@ -1,6 +1,6 @@
-# CSGames Bell 2018
+# CSGames Bell 2018 Web Competition
 
-This repo is a web application project and uses Docker, Flask and React. This competition was part of the 2018 edition of the [CS Games](http://csgames.org), a collegiate competition that includes challenges from all aspects of computing.
+This competition was part of the 2018 edition of the [CS Games](http://csgames.org), a collegiate competition that includes challenges from all aspects of computing.
 
 ## Competition Description
 You are an extraterrestrial life form on Earth without any tools to properly integrate yourself. What's better than news shows and TV shows to open a conversation with humans?
