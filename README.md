@@ -118,3 +118,4 @@ Response
 ## References
 * [CSGames Bell 2018 - User stories (final - EN version)](https://trello.com/b/pT20udUF/csgames-bell-2018-user-stories-final-en-version)
 * [Microservices with Docker, Flask, and React](https://github.com/testdrivenio/testdriven-app-2.4)
+* [React + Redux - User Registration and Login Tutorial & Example](http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example)
