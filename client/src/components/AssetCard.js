@@ -26,16 +26,16 @@ function AssetCard(props) {
 
         <footer className="card-footer">
           <a href="/" className="card-footer-item">
-            <span class="icon">
-              <i class="fab fa-youtube"></i>
+            <span className="icon">
+              <i className="fab fa-youtube"></i>
             </span>
             <span>
               Watch
             </span>
           </a>
           <a href="/" className="card-footer-item">
-            <span class="icon">
-              <i class="fas fa-edit"></i>
+            <span className="icon">
+              <i className="fas fa-edit"></i>
             </span>
             <span>
               Edit
