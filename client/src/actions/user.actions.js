@@ -20,7 +20,7 @@ function login(username, password) {
           history.push("/");
         },
         error => {
-          dispatch(failure(error.toString()));
+          dispatch(failure(error));
           dispatch(alertActions.error(error));
         }
       )
@@ -49,10 +49,39 @@ function login(username, password) {
 }
 
 function logout() {
-  userService.logout();
-  return {
-    type: userConstants.LOGOUT
+  return dispatch => {
+    dispatch(request());
+
+    userService.logout()
+    .then(
+      data => {
+        dispatch(success(data));
+      },
+      error => {
+        dispatch(failure(error));
+      }
+    );
   };
+
+  function request() {
+    return {
+      type: userConstants.LOGOUT_REQUEST
+    }
+  }
+
+  function success(data) {
+    return {
+      type: userConstants.LOGOUT_SUCCESS,
+      data
+    }
+  }
+
+  function failure(error) {
+    return {
+      type: userConstants.LOGOUT_FAILURE,
+      error
+    }
+  }
 }
 
 function register(user) {

@@ -55,8 +55,9 @@ Connect to the client
 * [BP:3] As an operator, I can run a bash script that starts both the client and the server
 * [BP:8] As an extraterrestrial user, I can navigate through available assets
 * [BP:2] As an extraterrestrial user, I am able to search content
-* [BP:3] As a user, I can authenticate (login)
+* [BP:3] As a user, I can authenticate (log in)
 * [BP:5] As an operator, I can create accounts for users (register)
+* As a user, I can log out.
 
 ## Completed Required API Routes
 * **POST** `/bell/authentication`

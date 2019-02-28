@@ -40,6 +40,7 @@ function logout() {
   .then(handleResponse)
   .then(data => {
     localStorage.removeItem("user");
+    return data;
   });
 }
 

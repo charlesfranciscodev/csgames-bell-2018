@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavBar from "./components/NavBar";
+import { NavBar } from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import { LoginPage } from "./components/LoginPage";
 import { RegisterPage } from "./components/RegisterPage"
@@ -18,6 +18,12 @@ class App extends Component {
         // clear alert on location change
         dispatch(alertActions.clear());
     });
+    this.alertButtonClick = this.alertButtonClick.bind(this);
+  }
+
+  alertButtonClick() {
+    const { dispatch } = this.props;
+    dispatch(alertActions.clear());
   }
 
   render() {
@@ -32,6 +38,7 @@ class App extends Component {
               <div className="container">
                 <div
                 className={`notification + ${alert.type}`}>
+                  <button className="delete" onClick={this.alertButtonClick} />
                   { alert.message }
                 </div>
               </div>
