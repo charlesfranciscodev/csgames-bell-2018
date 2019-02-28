@@ -152,9 +152,9 @@ class RegisterPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { loggingIn } = state.authentication;
+  const { registring } = state.authentication;
   return {
-    loggingIn
+    registring
   };
 }
 
