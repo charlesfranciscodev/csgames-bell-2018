@@ -1,39 +1,58 @@
 import React, { Component } from "react";
-import NavBar from "./components/NavBar"
-import Hero from "./components/HeroBanner"
-import SearchAsset from "./components/SearchAsset"
-import AssetGallery from "./components/AssetGallery"
-import axios from 'axios';
+import NavBar from "./components/NavBar";
+import HomePage from "./components/HomePage";
+import { LoginPage } from "./components/LoginPage";
+import { RegisterPage } from "./components/RegisterPage"
+
+import { Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { history } from "./helpers";
+import { alertActions } from './actions';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      assets: []
-    }
-    this.search = this.search.bind(this);
-  }
 
-  componentDidMount() {
-    this.search("");
-  }
-
-  search(query) {
-    const url = `${process.env.REACT_APP_USERS_SERVICE_URL}/bell/search?query=${query}`;
-    axios.get(url)
-    .then(res => this.setState({assets: res.data}));
+    const { dispatch } = this.props;
+    history.listen((location, action) => {
+        // clear alert on location change
+        dispatch(alertActions.clear());
+    });
   }
 
   render() {
+    const { alert } = this.props;
     return (
       <div>
-        <NavBar />
-        <Hero />
-        <SearchAsset search={this.search} />
-        <AssetGallery assets={this.state.assets} />
+        <Router history={history}>
+          <div>
+            <NavBar />
+
+            {alert.message &&
+              <div className="container">
+                <div
+                className={`notification + ${alert.type}`}>
+                  { alert.message }
+                </div>
+              </div>
+            }
+
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+          </div>
+        </Router>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  const { alert } = state;
+  return {
+    alert
+  };
+}
+
+const connectedApp = connect(mapStateToProps)(App);
+export { connectedApp as App };

@@ -223,15 +223,15 @@ def bell_hidden_account():
             response["message"] = "Invalid profile name: {}".format(name)
             return jsonify(response), 400
 
-    user_id = request_json["accountId"]
-    user = User.query.filter_by(user_id=user_id).first()
+    username = request_json["username"]
+    user = User.query.filter_by(username=username).first()
     if user is not None:
-        response["message"] = "User already exists"
+        response["message"] = "Username already exists"
         return jsonify(response), 409
 
     user = User()
-    user.user_id = user_id
-    user.username = request_json["username"]
+    user.user_id = request_json["accountId"]
+    user.username = username
     password = request_json["password"].encode("utf-8")
     user.hashed_password = hashlib.sha256(password).hexdigest()
     for name in profile_names:

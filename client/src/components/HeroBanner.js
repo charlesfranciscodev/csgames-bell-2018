@@ -2,7 +2,7 @@ import React from "react";
 
 function HeroBanner(props) {
   return (
-    <section className="hero is-info">
+    <section className="hero is-primary is-bold">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">

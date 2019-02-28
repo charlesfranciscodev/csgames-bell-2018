@@ -47,15 +47,15 @@ class NavBar extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <a className="button is-primary" href="/">
+                  <a className="button is-primary" href="/register">
                     <span className="icon">
                       <i className="fas fa-user-plus"></i>
                     </span>
                     <span>
-                      <strong>Sign up</strong>
+                      <strong>Register</strong>
                     </span>
                   </a>
-                  <a className="button is-light" href="/">
+                  <a className="button is-light" href="/login">
                     <span className="icon">
                       <i className="fas fa-sign-in-alt"></i>
                     </span>
