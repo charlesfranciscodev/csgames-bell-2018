@@ -3,6 +3,7 @@ import { NavBar } from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import { LoginPage } from "./components/LoginPage";
 import { RegisterPage } from "./components/RegisterPage"
+import Asset from "./components/Asset";
 
 import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -47,6 +48,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/hidden" component={RegisterPage} />
+            <Route path="/asset/:mediaId" component={Asset} />
           </div>
         </Router>
       </div>

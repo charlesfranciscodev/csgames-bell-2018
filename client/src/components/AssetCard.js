@@ -4,12 +4,14 @@ function AssetCard(props) {
   return (
     <div className="column is-one-quarter-desktop is-half-tablet">
       <div className="card">
-        <div className="card-image">
-          <figure className="image is-4by3">
-            <img
-            src={"https://img.youtube.com/vi/" + props.asset.media.mediaId + "/0.jpg"} alt="Video Thumbnail" />
-          </figure>
-        </div>
+        <a href={"/asset/" + props.asset.media.mediaId}>
+          <div className="card-image">
+            <figure className="image is-4by3">
+              <img
+              src={"https://img.youtube.com/vi/" + props.asset.media.mediaId + "/0.jpg"} alt="Video Thumbnail" />
+            </figure>
+          </div>
+        </a>
 
         <div className="card-content">
           <div className="media">
@@ -25,7 +27,8 @@ function AssetCard(props) {
         </div>
 
         <footer className="card-footer">
-          <a href="/" className="card-footer-item">
+          <a href={"/asset/" + props.asset.media.mediaId}
+          className="card-footer-item">
             <span className="icon">
               <i className="fab fa-youtube"></i>
             </span>

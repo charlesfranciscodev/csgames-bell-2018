@@ -58,6 +58,8 @@ Connect to the client
 * [BP:3] As a user, I can authenticate (log in)
 * [BP:5] As an operator, I can create accounts for users (register)
 * As a user, I can log out.
+* [BP:1] As an extraterrestrial user, I can watch a video
+* [BP:3] As an extraterrestrial user, I can play an asset that is available
 
 ## Completed Required API Routes
 * **POST** `/bell/authentication`
