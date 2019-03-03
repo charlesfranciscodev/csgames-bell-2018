@@ -11,7 +11,9 @@ Your task is to create a streaming platform (HTTP REST backend and web frontend)
 ## Start the server and the client
 `./start.sh`
 
-The client should be acessible at [http://localhost:3007/](http://localhost:3007/)
+The client should be acessible at [http://localhost:3007/](http://localhost:3007/).
+
+I used JWT for authentication because the default Flask session is not persisted in the browser.
 
 ## Common Commands
 
@@ -60,9 +62,9 @@ Connect to the client
 * As a user, I can log out.
 * [BP:1] As an extraterrestrial user, I can watch a video
 * [BP:3] As an extraterrestrial user, I can play an asset that is available
+* [BP:?] As an extraterrestrial user, I should not be able to stream a video that does not fit my profile
 
 ## Completed Required API Routes
-* **POST** `/bell/authentication`
 * **PUT** `/bell/authentication`
 * **GET** `/bell/assets?profiles=X&profiles=Y`
 * **GET** `/bell/alerts`
@@ -70,6 +72,30 @@ Connect to the client
 * **PUT** `/bell/hidden/asset/{:id}`
 * **POST** `/bell/hidden/account`
 * **GET** `/bell/search?query=<query>`
+
+**POST** `/bell/authentication`
+
+Logs in the user.
+
+Request
+```json
+{
+  "username": "YoungProudBandicoot",
+  "password": "Password_4"
+}
+```
+
+Response
+```json
+{
+  "accountId": "cf44bf5c-0cca-45f1-a47a-a13b6c859054",
+  "hashedCredentials": "YoungProudBandicoot:973faaff5f9859cd1c8145cf1f4b1aa0833be900da1916ecf168853e95362054",
+  "profiles": [
+    "Vaporwave Lover"
+  ],
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTQyNDQyMjAsImlhdCI6MTU1MTY1MjIyMCwic3ViIjoiY2Y0NGJmNWMtMGNjYS00NWYxLWE0N2EtYTEzYjZjODU5MDU0In0.cAkWQE9bVYeRXcgNH9MFIas0VYqaLPVTcec5IYpBtsk"
+}
+```
 
 ## Completed Additional API Routes
 
@@ -91,7 +117,7 @@ Response
 ```
 200 | when the asset is valid
 
-400 | when the media id or licensing window is invalid
+400 | when the media id, licensing window or profiles are invalid
 
 ---
 
@@ -124,3 +150,4 @@ Response
 * [CSGames Bell 2018 - User stories (final - EN version)](https://trello.com/b/pT20udUF/csgames-bell-2018-user-stories-final-en-version)
 * [Microservices with Docker, Flask, and React](https://github.com/testdrivenio/testdriven-app-2.4)
 * [React + Redux - User Registration and Login Tutorial & Example](http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example)
+* [JSON Web Tokens](https://jwt.io/)

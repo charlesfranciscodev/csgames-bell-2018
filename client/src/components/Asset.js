@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./Asset.css";
 
+import { authHeader } from "../helpers";
+
 class Asset extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,12 @@ class Asset extends Component {
 
   componentDidMount() {
     const { match: { params } } = this.props;
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        ...authHeader()
+      }
+    }
     const url = `${process.env.REACT_APP_BELL_SERVICE_URL}/bell/asset/${params.mediaId}`;
 
     function handleResponse(response) {
@@ -32,7 +40,7 @@ class Asset extends Component {
       });
     }
 
-    fetch(url)
+    fetch(url, requestOptions)
     .then(handleResponse)
     .then(data => this.setState({ asset: data }))
     .catch(error => this.setState({ error: error }));

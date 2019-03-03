@@ -1,3 +1,7 @@
+import datetime
+import jwt
+
+from flask import current_app
 from project import db
 
 user_profile = db.Table("user_profile",
@@ -48,6 +52,51 @@ class User(db.Model):
         backref=db.backref("user_profiles", lazy=True)
     )
 
+    def to_json(self):
+        user_dict = {
+            "accountId": self.user_id,
+            "profiles": [],
+            "hashedCredentials": self.username + ":" + self.hashed_password
+        }
+        for profile in self.profiles:
+            user_dict["profiles"].append(profile.name)
+        return user_dict
+
+    def encode_auth_token(self):
+        """Generates the auth token"""
+        now = datetime.datetime.utcnow()
+        delta = datetime.timedelta(
+            days=current_app.config.get("TOKEN_EXPIRATION_DAYS"),
+            seconds=current_app.config.get("TOKEN_EXPIRATION_SECONDS")
+        )
+        try:
+            payload = {
+                "exp": now + delta,
+                "iat": now,
+                "sub": self.user_id
+            }
+            return jwt.encode(
+                payload,
+                current_app.config.get("SECRET_KEY"),
+                algorithm="HS256"
+            )
+        except Exception as e:
+            return e
+
+    @staticmethod
+    def decode_auth_token(auth_token):
+        """Decodes the auth token"""
+        try:
+            payload = jwt.decode(
+                auth_token,
+                current_app.config.get("SECRET_KEY")
+            )
+            return (True, payload["sub"])
+        except jwt.ExpiredSignatureError:
+            return (False, "Signature expired. Please log in again.")
+        except jwt.InvalidTokenError:
+            return (False, "Invalid token. Please log in again.")
+
 
 class Profile(db.Model):
     __tablename__ = "profile"
@@ -95,12 +144,3 @@ class Provider(db.Model):
     provider_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     assets = db.relationship("Asset", backref="provider")
-
-
-class Session(db.Model):
-    __tablename__ = "session"
-    id = db.Column(db.Integer, primary_key=True)
-    session_id = db.Column(db.String(32), nullable=False)
-    user_id = db.Column(
-        db.String(36), db.ForeignKey("user.user_id"), nullable=False
-    )

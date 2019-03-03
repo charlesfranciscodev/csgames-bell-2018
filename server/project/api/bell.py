@@ -4,83 +4,101 @@ import hashlib
 import datetime
 import uuid
 
-from flask import Blueprint, jsonify, request, render_template, session
+from functools import wraps
 
-from project.api.models import User, Profile, Asset, Provider, Session
+from flask import Blueprint, jsonify, request, render_template
+
+from project.api.models import User, Profile, Asset, Provider
 from project.api.models import user_profile, asset_profile, provider_profile
 from project import db
 
-from sqlalchemy import or_
+from sqlalchemy import or_, and_
 
-bell_blueprint = Blueprint("bell", __name__, template_folder="./templates")
-
-
-@bell_blueprint.route("/app/ping")
-def ping_pong():
-    return jsonify({
-        "status": "success",
-        "message": "pong"
-    })
+bell_blueprint = Blueprint("bell", __name__)
 
 
-@bell_blueprint.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
+def authenticate(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        response = {
+            "message": "Provide a valid auth token."
+        }
+        auth_header = request.headers.get("Authorization")
+        if not auth_header:
+            return jsonify(response), 403
+        auth_token = auth_header.split(" ")[1]
+        valid_token, value = User.decode_auth_token(auth_token)
+        if not valid_token:
+            response["message"] = value
+            return jsonify(response), 401
+        user = User.query.filter_by(user_id=value).first()
+        if user is None:
+            return jsonify(response), 401
+        return f(value, *args, **kwargs)
+    return decorated_function
 
 
-@bell_blueprint.route("/bell/authentication", methods=["POST", "PUT"])
-def bell_authentication():
+def optional_authenticate(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        auth_header = request.headers.get("Authorization")
+        if not auth_header:
+            return f(None, *args, **kwargs)
+        auth_token = auth_header.split(" ")[1]
+        valid_token, value = User.decode_auth_token(auth_token)
+        if not valid_token:
+            return f(None, *args, **kwargs)
+        user = User.query.filter_by(user_id=value).first()
+        if user is None:
+            return f(None, *args, **kwargs)
+        return f(value, *args, **kwargs)
+    return decorated_function
+
+
+@bell_blueprint.route("/bell/authentication", methods=["POST"])
+def bell_authentication_post():
+    """Logs in the user"""
     response = {}
     request_json = request.get_json()
-    if request.method == "POST":
-        username = request_json["username"]
-        password = request_json["password"].encode("utf-8")
-        user_object = User.query.filter_by(username=username).first()
-        if user_object is None:
-            response["message"] = "Invalid username or password"
-            return jsonify(response), 401
-        hashed_password = hashlib.sha256(password).hexdigest()
-        if hashed_password != user_object.hashed_password:
-            response["message"] = "Invalid username or password"
-            return jsonify(response), 401
-        
-        # Create session
-        session["session_id"] = uuid.uuid4().hex
-        session_object = Session()
-        session_object.session_id = session["session_id"]
-        session_object.user_id = user_object.user_id
-        db.session.add(session_object)
-        db.session.commit()
-    elif request.method == "PUT":
-        if "session_id" not in session:
-            response["message"] = "Authentication required"
-            return jsonify(response), 401
 
-        user_object = (
-            db.session
-            .query(User)
-            .join(Session, Session.user_id == User.user_id)
-            .filter(Session.session_id == session["session_id"])
-            .first()
-        )
+    username = request_json["username"]
+    password = request_json["password"].encode("utf-8")
+    user_object = User.query.filter_by(username=username).first()
+    if user_object is None:
+        response["message"] = "Invalid username or password"
+        return jsonify(response), 401
+    hashed_password = hashlib.sha256(password).hexdigest()
+    if hashed_password != user_object.hashed_password:
+        response["message"] = "Invalid username or password"
+        return jsonify(response), 401
 
-        if user_object is None:
-            response["message"] = "User not found"
-            return jsonify(response), 401
-
-        hashed_credentials = request_json["hashedCredentials"].split(":")
-        username = hashed_credentials[0]
-        hashed_password = hashed_credentials[1]
-        user_object.username = username
-        user_object.hashed_password = hashed_password
-        db.session.commit()
-
-    response["accountId"] = user_object.user_id
-    response["profiles"] = []
-    for profile in user_object.profiles:
-        response["profiles"].append(profile.name)
-    response["hashedCredentials"] = username + ":" + hashed_password
+    # Generate auth token
+    auth_token = user_object.encode_auth_token()
+    response = user_object.to_json()
+    response["token"] = auth_token.decode()
     return jsonify(response)
+
+
+@bell_blueprint.route("/bell/authentication", methods=["PUT"])
+@authenticate
+def bell_authentication_put(user_id):
+    response = {}
+    request_json = request.get_json()
+
+    user_object = User.query.filter_by(user_id=user_id).first()
+
+    if user_object is None:
+        response["message"] = "User not found"
+        return jsonify(response), 401
+
+    hashed_credentials = request_json["hashedCredentials"].split(":")
+    username = hashed_credentials[0]
+    hashed_password = hashed_credentials[1]
+    user_object.username = username
+    user_object.hashed_password = hashed_password
+    db.session.commit()
+
+    return jsonify(user_object.to_json())
 
 
 @bell_blueprint.route("/bell/assets")
@@ -201,6 +219,7 @@ def bell_hidden_asset(media_id):
 
 @bell_blueprint.route("/bell/hidden/account", methods=["POST"])
 def bell_hidden_account():
+    """Creates a user account"""
     response = {}
     secret_key = request.headers.get("secretKey")
     request_json = request.get_json()
@@ -229,6 +248,7 @@ def bell_hidden_account():
         response["message"] = "Username already exists"
         return jsonify(response), 409
 
+    # Create user
     user = User()
     user.user_id = request_json["accountId"]
     user.username = username
@@ -239,6 +259,7 @@ def bell_hidden_account():
         user.profiles.append(profile)
     db.session.add(user)
     db.session.commit()
+
     response["message"] = "Account created successfully"
     return jsonify(response), 201
 
@@ -280,28 +301,49 @@ def bell_search():
 
 
 @bell_blueprint.route("/bell/asset/<string:media_id>")
-def bell_asset(media_id):
+@optional_authenticate
+def bell_asset(user_id, media_id):
     response = {}
     current = datetime.datetime.utcnow()
 
+    # filter asset based on media_id and licensing window
     asset = (
         db.session
         .query(Asset)
         .filter(
             Asset.media_id == media_id,
             Asset.licensing_window_start <= current,
-            Asset.licensing_window_end >= current,
+            Asset.licensing_window_end >= current
         )
         .first()
     )
-
-    if asset is not None:
-        response = asset.to_json()
-    else:
+    if asset is None:
         response["message"] = "Invalid media id or licensing window"
         return jsonify(response), 400
 
-    return jsonify(response)
+    # select currently logged in user
+    if user_id is None:
+        return jsonify(asset.to_json())
+    user = User.query.filter_by(user_id=user_id).first()
+
+    # select asset provider
+    provider = (
+        db.session.query(Provider)
+        .filter(Provider.provider_id == asset.provider_id)
+        .first()
+    )
+
+    # filter by asset and provider profiles
+    user_profiles = frozenset(user.profiles)
+    if user_profiles.isdisjoint(asset.profiles):
+        response["message"] = "Invalid asset profiles"
+        return jsonify(response), 400
+
+    if user_profiles.isdisjoint(provider.profiles):
+        response["message"] = "Invalid provider profiles"
+        return jsonify(response), 400
+
+    return jsonify(asset.to_json())
 
 
 @bell_blueprint.route("/bell/logout", methods=["POST"])
@@ -309,10 +351,5 @@ def bell_logout():
     response = {
         "message": "Logout successful"
     }
-
-    session_id = session.pop("session_id", None)
-    if session_id is not None:
-        db.session.query(Session).filter(Session.session_id == session_id).delete()
-        db.session.commit()
 
     return jsonify(response)
