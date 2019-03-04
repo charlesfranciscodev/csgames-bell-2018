@@ -8,6 +8,10 @@ You are an extraterrestrial life form on Earth without any tools to properly int
 The goal:
 Your task is to create a streaming platform (HTTP REST backend and web frontend) to provide easy access to human content for extraterrestrial life form. You have been given a set of stories with business points for each story. The more business points you complete, the better extraterrestrials will be able to integrate on Earth.
 
+## Preview
+
+![Preview](./screenshot.png)
+
 ## Start the server and the client
 `./start.sh`
 
