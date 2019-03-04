@@ -63,6 +63,7 @@ Connect to the client
 * [BP:1] As an extraterrestrial user, I can watch a video
 * [BP:3] As an extraterrestrial user, I can play an asset that is available
 * [BP:?] As an extraterrestrial user, I should not be able to stream a video that does not fit my profile
+* As an extraterrestrial user, I can add a filter to the stream.
 
 ## Completed Required API Routes
 * **PUT** `/bell/authentication`
@@ -151,3 +152,4 @@ Response
 * [Microservices with Docker, Flask, and React](https://github.com/testdrivenio/testdriven-app-2.4)
 * [React + Redux - User Registration and Login Tutorial & Example](http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example)
 * [JSON Web Tokens](https://jwt.io/)
+* [https://www.paulirish.com/work/videooo.xhtml](https://www.paulirish.com/work/videooo.xhtml)

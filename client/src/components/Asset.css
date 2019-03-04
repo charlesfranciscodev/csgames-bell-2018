@@ -12,3 +12,7 @@
   width: 100%;
   position: absolute;
 }
+
+#selectFilter {
+  margin: 10px 0;
+}

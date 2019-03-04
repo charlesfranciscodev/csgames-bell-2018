@@ -75,7 +75,7 @@ class RegisterPage extends Component {
             <div className="columns is-centered">
               <form onSubmit={this.handleSubmit}>
                 <div className="field">
-                  <p className="control has-icons-left has-icons-right">
+                  <p className="control has-icons-left">
                     <input
                       className="input"
                       type="text"
@@ -85,9 +85,6 @@ class RegisterPage extends Component {
                       onChange={this.onChange}/>
                     <span className="icon is-small is-left">
                       <i className="fas fa-user"></i>
-                    </span>
-                    <span className="icon is-small is-right">
-                      <i className="fas fa-check"></i>
                     </span>
                   </p>
                   {(submitted && !username) && 
