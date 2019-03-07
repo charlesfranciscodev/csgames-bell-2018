@@ -47,7 +47,7 @@ class App extends Component {
 
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/hidden" component={RegisterPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/asset/:mediaId" component={Asset} />
           </div>
         </Router>
