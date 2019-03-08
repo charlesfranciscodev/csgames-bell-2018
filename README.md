@@ -8,9 +8,13 @@ You are an extraterrestrial life form on Earth without any tools to properly int
 The goal:
 Your task is to create a streaming platform (HTTP REST backend and web frontend) to provide easy access to human content for extraterrestrial life form. You have been given a set of stories with business points for each story. The more business points you complete, the better extraterrestrials will be able to integrate on Earth.
 
-## Preview
+## Home Page
 
-![Preview](./screenshot.png)
+![Screenshot](screenshot.png)
+
+## Filters
+
+<img src="filters.png" height="400" width="400">
 
 ## Start the server and the client
 `./start.sh`
@@ -67,7 +71,7 @@ Connect to the client
 * [BP:1] As an extraterrestrial user, I can watch a video
 * [BP:3] As an extraterrestrial user, I can play an asset that is available
 * [BP:?] As an extraterrestrial user, I should not be able to stream a video that does not fit my profile
-* As an extraterrestrial user, I can add a filter to the stream.
+* As an extraterrestrial user, I can add a filter to the stream (blur, inverse, convolve, convoblur, black and white, noir, displacement).
 * As an operator, I can add an asset (requires YouTube API key)
 
 In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
