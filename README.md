@@ -67,11 +67,11 @@ Connect to the client
 * [BP:2] As an extraterrestrial user, I am able to search content
 * [BP:3] As a user, I can authenticate (log in)
 * [BP:5] As an operator, I can create accounts for users (register)
-* As a user, I can log out.
+* As a user, I can log out
 * [BP:1] As an extraterrestrial user, I can watch a video
 * [BP:3] As an extraterrestrial user, I can play an asset that is available
 * [BP:?] As an extraterrestrial user, I should not be able to stream a video that does not fit my profile
-* As an extraterrestrial user, I can add a filter to the stream (blur, inverse, convolve, convoblur, black and white, noir, displacement).
+* As an extraterrestrial user, I can add a filter to the stream (blur, inverse, convolve, convoblur, black and white, noir, displacement)
 * As an operator, I can create or update an asset (requires YouTube API key)
 
 In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
