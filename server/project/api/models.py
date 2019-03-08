@@ -7,11 +7,17 @@ from project import db
 user_profile = db.Table("user_profile",
     db.Column(
         "user_id", db.String(36),
-        db.ForeignKey("user.user_id"), primary_key=True
+        db.ForeignKey(
+            "user.user_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True
     ),
     db.Column(
         "profile_id", db.Integer,
-        db.ForeignKey("profile.profile_id"), primary_key=True
+        db.ForeignKey(
+            "profile.profile_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True
     )
 )
 
@@ -25,18 +31,27 @@ asset_profile = db.Table("asset_profile",
     ),
     db.Column(
         "profile_id", db.Integer,
-        db.ForeignKey("profile.profile_id"), primary_key=True
+        db.ForeignKey(
+            "profile.profile_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True
     )
 )
 
 provider_profile = db.Table("provider_profile",
     db.Column(
         "provider_id", db.Integer,
-        db.ForeignKey("provider.provider_id"), primary_key=True
+        db.ForeignKey(
+            "provider.provider_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True
     ),
     db.Column(
         "profile_id", db.Integer,
-        db.ForeignKey("profile.profile_id"), primary_key=True
+        db.ForeignKey(
+            "profile.profile_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        primary_key=True
     )
 )
 
@@ -103,17 +118,27 @@ class Profile(db.Model):
     profile_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
 
+    def to_json(self):
+        profile_dict = {
+            "profileId": self.profile_id,
+            "name": self.name
+        }
+        return profile_dict
 
 class Asset(db.Model):
     __tablename__ = "asset"
-    media_id = db.Column(db.String(11), primary_key=True)
+    media_id = db.Column(db.String(11), primary_key=True, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     profiles = db.relationship(
         "Profile", secondary=asset_profile, lazy="subquery",
         backref=db.backref("asset_profiles", lazy=True)
     )
     provider_id = db.Column(
-        db.Integer, db.ForeignKey("provider.provider_id"), nullable=False
+        db.Integer,
+        db.ForeignKey(
+            "provider.provider_id", onupdate="CASCADE", ondelete="CASCADE"
+        ),
+        nullable=False
     )
     duration_in_seconds = db.Column(db.Integer, nullable=False)
     licensing_window_start = db.Column(db.DateTime, nullable=False)
@@ -144,3 +169,10 @@ class Provider(db.Model):
     provider_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     assets = db.relationship("Asset", backref="provider")
+
+    def to_json(self):
+        provider_dict = {
+            "providerId": self.provider_id,
+            "name": self.name
+        }
+        return provider_dict

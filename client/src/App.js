@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import { LoginPage } from "./components/LoginPage";
 import { RegisterPage } from "./components/RegisterPage"
 import Asset from "./components/Asset";
+import CreateAsset from "./components/CreateAsset";
 
 import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/asset/:mediaId" component={Asset} />
+            <Route path="/create" component={CreateAsset} />
           </div>
         </Router>
       </div>

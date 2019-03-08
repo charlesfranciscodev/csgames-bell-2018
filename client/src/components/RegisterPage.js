@@ -4,7 +4,6 @@ import uuid from "uuid";
 
 import { connect } from "react-redux";
 import { userActions } from "../actions";
-import { profileConstants } from "../constants";
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -14,6 +13,7 @@ class RegisterPage extends Component {
     this.props.dispatch(userActions.logout());
 
     this.state = {
+      allProfiles: [],
       profiles: [],
       username: "",
       password: "",
@@ -23,6 +23,13 @@ class RegisterPage extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const url = `${process.env.REACT_APP_BELL_SERVICE_URL}/bell/profiles`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => this.setState({allProfiles: data}));
   }
 
   onChange(e) {
@@ -64,7 +71,7 @@ class RegisterPage extends Component {
     const password = this.state.password;
     const submitted = this.state.submitted;
 
-    const profileValues = profileConstants.map((profile) =>
+    const profileValues = this.state.allProfiles.map((profile) =>
       <option key={profile.profileId} value={profile.name}>{profile.name}</option>
     );
 
@@ -127,6 +134,9 @@ class RegisterPage extends Component {
                         </select>
                       </div>
                     </div>
+                    {(submitted && !this.state.profiles.length) &&
+                      <p className="help is-danger">Please pick at least one profile</p>
+                    }
                   </div>
                 </div>
 

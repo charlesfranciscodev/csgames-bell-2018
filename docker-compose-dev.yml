@@ -37,8 +37,6 @@ services:
       - "/usr/src/app/node_modules"
     ports:
       - 3007:3000
-    environment:
-      - NODE_ENV=development
-      - REACT_APP_BELL_SERVICE_URL=http://localhost:8932
+    env_file: client.env
     depends_on:
       - server

@@ -68,13 +68,21 @@ Connect to the client
 * [BP:3] As an extraterrestrial user, I can play an asset that is available
 * [BP:?] As an extraterrestrial user, I should not be able to stream a video that does not fit my profile
 * As an extraterrestrial user, I can add a filter to the stream.
+* As an operator, I can add an asset (requires YouTube API key)
+
+In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
+```
+NODE_ENV=development
+REACT_APP_BELL_SERVICE_URL=http://localhost:8932
+YOUTUBE_DATA_API_URL=https://www.googleapis.com/youtube/v3/
+YOUTUBE_DATA_API_KEY=[YOUR_YOUTUBE_DATA_API_KEY]
+```
 
 ## Completed Required API Routes
 * **PUT** `/bell/authentication`
 * **GET** `/bell/assets?profiles=X&profiles=Y`
 * **GET** `/bell/alerts`
 * **PUT** `/bell/hidden/provider/{:id}/refreshRate`
-* **PUT** `/bell/hidden/asset/{:id}`
 * **POST** `/bell/hidden/account`
 * **GET** `/bell/search?query=<query>`
 
@@ -137,6 +145,16 @@ Response
 }
 ```
 200 | Logout successful
+
+---
+
+**POST** `/bell/hidden/asset/{:id}`
+
+Create an asset.
+
+**PUT** `/bell/hidden/asset/{:id}`
+
+Update an asset.
 
 ## Profiles
 | profile_id | name |

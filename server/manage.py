@@ -1,9 +1,11 @@
+import sys
 import json
 import dateutil.parser
 
 from flask.cli import FlaskGroup
 
 from project import create_app, db
+from project.api.models import user_profile, asset_profile, provider_profile
 from project.api.models import User, Profile, Asset, Provider
 
 app = create_app()
@@ -12,6 +14,7 @@ cli = FlaskGroup(create_app=create_app)
 
 @cli.command("recreate_db")
 def recreate_db():
+    db.reflect()
     db.drop_all()
     db.create_all()
     db.session.commit()

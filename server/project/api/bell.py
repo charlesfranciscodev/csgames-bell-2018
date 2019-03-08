@@ -3,6 +3,7 @@ import sys
 import hashlib
 import datetime
 import uuid
+import dateutil.parser
 
 from functools import wraps
 
@@ -149,7 +150,7 @@ def bell_hidden_provider_refresh_rate(provider_id):
     return jsonify(response)
 
 
-@bell_blueprint.route("/bell/hidden/asset/<string:media_id>", methods=["PUT"])
+@bell_blueprint.route("/bell/hidden/asset/<string:media_id>", methods=["POST", "PUT"])
 def bell_hidden_asset(media_id):
     response = {}
     secret_key = request.headers.get("secretKey")
@@ -186,26 +187,43 @@ def bell_hidden_asset(media_id):
             response["message"] = "Missing media {} key in request body".format(key)
             return jsonify(response), 400
 
+    licensing_window_start = licensing_window["start"]
+    licensing_window_end = licensing_window["end"]
+    licensing_window_start_datetime = dateutil.parser.parse(licensing_window_start)
+    licensing_window_end_datetime = dateutil.parser.parse(licensing_window_end)
+    if licensing_window_start_datetime > licensing_window_end_datetime:
+        response["message"] = "Invalid licensing window"
+        return jsonify(response), 400
+
     # Update or create an asset
     asset = Asset.query.filter_by(media_id=media_id).first()
-    create = False
-    if asset is None:
-        asset = Asset()
-        create = True
-
-    if (not create):
-        asset.profiles = []
-    for prof_id in request_json["profileIds"]:
-        profile = Profile.query.filter_by(profile_id=prof_id).first()
-        asset.profiles.append(profile)
+    create = request.method == "POST"
+    if create:
+        if asset is None:
+            asset = Asset()
+            create = True
+        else:
+            message = "Asset {} already exists".format(media["mediaId"])
+            response["message"] = message
+            return jsonify(response), 400
+    elif asset is None:
+        message = "Asset {} does not exists".format(media["mediaId"])
+        response["message"] = message
+        return jsonify(response), 400
 
     asset.media_id = media["mediaId"]
     asset.title = request_json["title"]
     
     asset.provider_id = int(provider_id)
     asset.duration_in_seconds = media["durationInSeconds"]
-    asset.licensing_window_start = licensing_window["start"]
-    asset.licensing_window_end = licensing_window["end"]
+    asset.licensing_window_start = licensing_window_start
+    asset.licensing_window_end = licensing_window_end
+
+    if (not create):
+        asset.profiles = []
+    for prof_id in request_json["profileIds"]:
+        profile = Profile.query.filter_by(profile_id=prof_id).first()
+        asset.profiles.append(profile)
 
     if create:
         db.session.add(asset)
@@ -352,4 +370,18 @@ def bell_logout():
         "message": "Logout successful"
     }
 
+    return jsonify(response)
+
+
+@bell_blueprint.route("/bell/profiles")
+def bell_profiles():
+    profiles = Profile.query.all();
+    response = [profile.to_json() for profile in profiles]
+    return jsonify(response)
+
+
+@bell_blueprint.route("/bell/providers")
+def bell_providers():
+    providers = Provider.query.all();
+    response = [provider.to_json() for provider in providers]
     return jsonify(response)

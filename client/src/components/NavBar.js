@@ -56,6 +56,15 @@ class NavBar extends Component {
                 Home
               </span>
             </a>
+
+            <a className="navbar-item" href="/create">
+              <span className="icon">
+                <i className="far fa-plus-square"></i>
+              </span>
+              <span>
+                Create Asset
+              </span>
+            </a>
           </div>
 
           { user ? (

@@ -36,14 +36,14 @@ function AssetCard(props) {
               Watch
             </span>
           </a>
-          <a href="/" className="card-footer-item">
+          {/* <a href="/" className="card-footer-item">
             <span className="icon">
               <i className="fas fa-edit"></i>
             </span>
             <span>
               Edit
             </span>
-          </a>
+          </a> */}
         </footer>
       </div>
     </div>
