@@ -6,7 +6,7 @@ import { authHeader } from "../helpers";
 
 import { history } from "../helpers";
 
-class CreateAsset extends Component {
+class CreateUpdateAsset extends Component {
   constructor(props) {
     super(props);
 
@@ -28,6 +28,8 @@ class CreateAsset extends Component {
     this.onMediaIdChange = this.onMediaIdChange.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitPost = this.handleSubmitPost.bind(this);
+    this.handleSubmitPut = this.handleSubmitPut.bind(this);
   }
 
   componentDidMount() {
@@ -80,8 +82,15 @@ class CreateAsset extends Component {
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmitPost() {
+    this.handleSubmit("POST");
+  }
+
+  handleSubmitPut() {
+    this.handleSubmit("PUT");
+  }
+
+  handleSubmit(method) {
     let durationInSeconds = 0;
     if (this.state.duration) {
       durationInSeconds = toSeconds(parse(this.state.duration));
@@ -107,7 +116,7 @@ class CreateAsset extends Component {
       asset.media.durationInSeconds &&  asset.profileIds.length
     ) {
       const requestOptions = {
-        method: "POST",
+        method: method,
         headers: {
           ...authHeader(),
           "Content-type": "application/json"
@@ -163,9 +172,9 @@ class CreateAsset extends Component {
           }
 
             <div className="columns is-centered">
-              <form onSubmit={this.handleSubmit}>
+              <form>
                 <h1 className="title has-text-info">
-                  Create An Asset
+                  Create or Update an Asset
                 </h1>
 
                 <div className="field">
@@ -267,12 +276,21 @@ class CreateAsset extends Component {
                   </div>
                 </div>
 
-                <div className="field">
+                <div className="field is-grouped is-grouped-centered">
                   <p className="control">
                     <button
-                    className="button is-success"
-                    type="submit">
+                      className="button is-primary"
+                      type="button"
+                      onClick={this.handleSubmitPost}>
                       Create Asset
+                    </button>
+                  </p>
+                  <p className="control">
+                    <button
+                      className="button is-link"
+                      type="button"
+                      onClick={this.handleSubmitPut}>
+                      Update Asset
                     </button>
                   </p>
                 </div>
@@ -285,4 +303,4 @@ class CreateAsset extends Component {
   }
 }
 
-export default CreateAsset;
+export default CreateUpdateAsset;

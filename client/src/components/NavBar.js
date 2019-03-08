@@ -57,12 +57,12 @@ class NavBar extends Component {
               </span>
             </a>
 
-            <a className="navbar-item" href="/create">
+            <a className="navbar-item" href="/create-update">
               <span className="icon">
-                <i className="far fa-plus-square"></i>
+                <i className="fas fa-wrench"></i>
               </span>
               <span>
-                Create Asset
+                Create or Update Asset
               </span>
             </a>
           </div>

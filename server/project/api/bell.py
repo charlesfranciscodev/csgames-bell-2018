@@ -207,7 +207,7 @@ def bell_hidden_asset(media_id):
             response["message"] = message
             return jsonify(response), 400
     elif asset is None:
-        message = "Asset {} does not exists".format(media["mediaId"])
+        message = "Asset {} does not exist".format(media["mediaId"])
         response["message"] = message
         return jsonify(response), 400
 
