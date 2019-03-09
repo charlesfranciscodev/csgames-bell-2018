@@ -31,7 +31,7 @@ Build the images:
 
 Run the containers:
 
-`docker-compose -f docker-compose-dev.yml up -d`
+`docker-compose -f docker-compose-dev.yml up`
 
 Create the database:
 
