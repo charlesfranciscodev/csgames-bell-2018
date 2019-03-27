@@ -16,6 +16,15 @@ Your task is to create a streaming platform (HTTP REST backend and web frontend)
 
 <img src="filters.png" height="400" width="400">
 
+## Setup
+In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
+```
+NODE_ENV=development
+REACT_APP_BELL_SERVICE_URL=http://localhost:8932
+REACT_APP_YOUTUBE_DATA_API_URL=https://www.googleapis.com/youtube/v3
+REACT_APP_YOUTUBE_DATA_API_KEY=[YOUR_YOUTUBE_DATA_API_KEY]
+```
+
 ## Start the server and the client
 `./start.sh`
 
@@ -74,14 +83,6 @@ Connect to the client
 * As an extraterrestrial user, I can add a filter to the stream (blur, inverse, convolve, convoblur, black and white, noir, displacement)
 * As an operator, I can create or update an asset (requires YouTube API key)
 
-In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
-```
-NODE_ENV=development
-REACT_APP_BELL_SERVICE_URL=http://localhost:8932
-YOUTUBE_DATA_API_URL=https://www.googleapis.com/youtube/v3/
-YOUTUBE_DATA_API_KEY=[YOUR_YOUTUBE_DATA_API_KEY]
-```
-
 ## Completed Required API Routes
 * **PUT** `/bell/authentication`
 * **GET** `/bell/assets?profiles=X&profiles=Y`
@@ -123,13 +124,19 @@ Returns the asset which corresponds to the media id parameter, only if the curre
 Response
 ```json
 {
-  "title" : "My dog Chop",
-  "providerId": "HBO",
-  "refreshRateInSeconds": 5,
+  "licensingWindow": {
+    "start": "2018-01-01T06:00:00",
+    "end": "2019-12-31T10:00:00",
+  },
   "media": {
-    "mediaId": "fH5yKr_c62A",
-    "durationInSeconds": 15
-  }
+    "durationInSeconds": 97,
+    "mediaId": "UYrkQL1bX4A"
+  },
+  "profileIds": ["4", "6", "7"],
+  "providerId": "CTV",
+  "provider": 2345
+  "refreshRateInSeconds": 3,
+  "title": "LazyTown song - Cooking By The Book"
 }
 ```
 200 | when the asset is valid

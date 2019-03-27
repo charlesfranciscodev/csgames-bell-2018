@@ -1,6 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function AssetCard(props) {
+  let title = props.asset.title.substring(0, 70);
+  if (props.asset.title.length > 70) {
+    title += "...";
+  }
+
   return (
     <div className="column is-one-quarter-desktop is-half-tablet">
       <div className="card">
@@ -16,7 +22,7 @@ function AssetCard(props) {
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">{props.asset.title}</p>
+              <p className="title is-4">{title}</p>
               <p className="subtitle is-6">{props.asset.providerId}</p>
             </div>
           </div>
@@ -27,23 +33,28 @@ function AssetCard(props) {
         </div>
 
         <footer className="card-footer">
-          <a href={"/asset/" + props.asset.media.mediaId}
-          className="card-footer-item">
+          <Link className="card-footer-item" to={"/asset/" + props.asset.media.mediaId}>
             <span className="icon">
               <i className="fab fa-youtube"></i>
             </span>
             <span>
               Watch
             </span>
-          </a>
-          {/* <a href="/" className="card-footer-item">
+          </Link>
+
+          <Link className="card-footer-item" to={{
+            pathname: '/create-update',
+            state: {
+              asset: props.asset
+            }
+          }}>
             <span className="icon">
               <i className="fas fa-edit"></i>
             </span>
             <span>
               Edit
             </span>
-          </a> */}
+          </Link>
         </footer>
       </div>
     </div>

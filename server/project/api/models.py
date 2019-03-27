@@ -149,12 +149,18 @@ class Asset(db.Model):
             provider_id=self.provider_id).first()
         asset_dict = {
             "title": self.title,
+            "provider": provider.provider_id,
             "providerId": provider.name,
             "refreshRateInSeconds": provider.refresh_rate_in_seconds,
             "media": {
                 "mediaId": self.media_id,
                 "durationInSeconds": self.duration_in_seconds
-            }
+            },
+            "licensingWindow": {
+                "start": self.licensing_window_start.isoformat(),
+                "end": self.licensing_window_end.isoformat()
+            },
+            "profileIds": [str(profile.profile_id) for profile in self.profiles]
         }
         return asset_dict
 

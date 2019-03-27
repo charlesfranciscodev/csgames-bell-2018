@@ -13,12 +13,13 @@ class CreateUpdateAsset extends Component {
     this.state = {
       allProviders: [], // API
       allProfiles: [], // API
-      providerId: "",
-      title: "", // YouTube API/form field
-      licensingWindowStart: "", // form field
-      licensingWindowEnd: "", // form field
-      profiles: [], // form field
-      mediaId: "", // form field
+      providerId: props.location.state ? props.location.state.asset.provider : 0,
+      title: props.location.state ? props.location.state.asset.title : "", // YouTube API/form field
+      // form fields
+      licensingWindowStart: props.location.state ? props.location.state.asset.licensingWindow.start: "",
+      licensingWindowEnd: props.location.state ? props.location.state.asset.licensingWindow.end: "",
+      profiles: props.location.state ? props.location.state.asset.profileIds: [],
+      mediaId: props.location.state ? props.location.state.asset.media.mediaId : "",
       duration: "", // YouTube API
       submitted: false,
       error: ""
@@ -30,6 +31,7 @@ class CreateUpdateAsset extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitPost = this.handleSubmitPost.bind(this);
     this.handleSubmitPut = this.handleSubmitPut.bind(this);
+    this.fetchYoutubeApi = this.fetchYoutubeApi.bind(this);
   }
 
   componentDidMount() {
@@ -42,22 +44,29 @@ class CreateUpdateAsset extends Component {
     fetch(urlProviders)
     .then(response => response.json())
     .then(data => this.setState({
-      providerId: data[0].providerId,
       allProviders: data
     }));
+
+    if (this.state.mediaId !== "") {
+      this.fetchYoutubeApi(this.state.mediaId);
+    }
   }
 
   onMediaIdChange(e) {
-    const value = e.target.value;
+    const mediaId = e.target.value;
     this.setState({
-      mediaId: value
+      mediaId: mediaId
     })
-    const url = `${process.env.REACT_APP_YOUTUBE_DATA_API_URL}/videos?id=${value}&part=snippet,contentDetails&key=${process.env.REACT_APP_YOUTUBE_DATA_API_KEY}`;
+    this.fetchYoutubeApi(mediaId);
+  }
+
+  fetchYoutubeApi(mediaId) {
+    const url = `${process.env.REACT_APP_YOUTUBE_DATA_API_URL}/videos?id=${mediaId}&part=snippet,contentDetails&key=${process.env.REACT_APP_YOUTUBE_DATA_API_KEY}`;
     fetch(url)
     .then(response => response.json())
     .then(data =>
       this.setState({
-        title: data.items[0].snippet.title,
+        title: this.state.title ? this.state.title : data.items[0].snippet.title,
         duration: data.items[0].contentDetails.duration
       })
     );
@@ -97,8 +106,9 @@ class CreateUpdateAsset extends Component {
     }
     this.setState({ submitted: true });
     this.setState({ error: "" });
+
     const asset = {
-      providerId: this.state.providerId,
+      providerId: this.state.providerId.toString(),
       title: this.state.title,
       licensingWindow: {
         start: this.state.licensingWindowStart,
@@ -110,11 +120,12 @@ class CreateUpdateAsset extends Component {
         durationInSeconds: durationInSeconds
       } 
     };
-    if (
-      asset.providerId && asset.title && asset.licensingWindow.start &&
-      asset.licensingWindow.end && asset.media.mediaId &&
-      asset.media.durationInSeconds &&  asset.profileIds.length
-    ) {
+
+    const validAsset = asset.providerId !== "" && asset.title !== "" &&
+    asset.licensingWindow.start !== "" && asset.licensingWindow.end !== "" &&
+    asset.profileIds.length !== 0 && asset.media.mediaId !== "" && asset.media.durationInSeconds !== 0;
+
+    if (validAsset) {
       const requestOptions = {
         method: method,
         headers: {
@@ -144,14 +155,14 @@ class CreateUpdateAsset extends Component {
   }
 
   render() {
-    const title = this.state.title;
-    const licensingWindowStart = this.state.licensingWindowStart;
-    const licensingWindowEnd = this.state.licensingWindowEnd;
-    const mediaId = this.state.mediaId;
-    const submitted = this.state.submitted;
+    const {title, licensingWindowStart, licensingWindowEnd, mediaId, providerId, submitted} = this.state
 
     const providerValues = this.state.allProviders.map((provider) =>
-      <option key={provider.providerId} value={provider.providerId}>{provider.name}</option>
+      <option
+      key={provider.providerId}
+      value={provider.providerId}>
+        {provider.name}
+      </option>
     );
 
     const profileValues = this.state.allProfiles.map((profile) =>
@@ -200,7 +211,10 @@ class CreateUpdateAsset extends Component {
                     <div className="field">
                       <div className="control">
                         <div className="select">
-                          <select name="providerId" onChange={this.onChange}>
+                          <select
+                          name="providerId"
+                          value={providerId}
+                          onChange={this.onChange}>
                           { providerValues }
                           </select>
                         </div>
@@ -229,14 +243,14 @@ class CreateUpdateAsset extends Component {
                   <div className="control">
                     <input
                       className="input"
-                      type="date"
+                      type="datetime-local"
                       placeholder="Licensing Window Start"
                       name="licensingWindowStart"
                       value={licensingWindowStart}
                       onChange={this.onChange}/>
                   </div>
                   {(submitted && !licensingWindowStart) && 
-                    <p className="help is-danger">Please enter a licensing window start date</p>
+                    <p className="help is-danger">Please enter a licensing window start date and time</p>
                   }
                 </div>
 
@@ -245,7 +259,7 @@ class CreateUpdateAsset extends Component {
                   <div className="control">
                     <input
                       className="input"
-                      type="date"
+                      type="datetime-local"
                       placeholder="Licensing Window End"
                       name="licensingWindowEnd"
                       value={licensingWindowEnd}
@@ -263,6 +277,7 @@ class CreateUpdateAsset extends Component {
                       <div className="select is-fullwidth is-multiple">
                         <select
                         multiple
+                        value={this.state.profiles}
                         size={profileValues.length}
                         name="profiles"
                         onChange={this.onSelectChange}>
