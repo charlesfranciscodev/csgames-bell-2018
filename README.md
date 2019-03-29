@@ -83,6 +83,16 @@ Connect to the client
 * As an extraterrestrial user, I can add a filter to the stream (blur, inverse, convolve, convoblur, black and white, noir, displacement)
 * As an operator, I can create or update an asset (requires YouTube API key)
 
+## TODO
+* [BP:21] As a 3D Enthusiast, I can add a filter to make my stream appear in 3D
+* [BP:13] As an extraterrestrial user, I can add an ASCII Art filter to the stream and toggle it
+* [BP:?] As an extraterrestrial user, I can add a Vaporwave filter to the stream and toggle it
+* [BP:5] As a extraterrestrial user, my background color changes depending on the dominant color shade in the video
+* [BP:3] As a content provider, I want the rights to be refreshed every X seconds (where X is defined by the content provider)
+* [BP:1] As an operator, I can change content provider refresh rate
+* [BP:?] The client must refresh its session in case of profiles changes
+* [BP:1] As a streaming platform, I am legally obligated to provide alerts in case of emergencies
+
 ## Completed Required API Routes
 * **PUT** `/bell/authentication`
 * **GET** `/bell/assets?profiles=X&profiles=Y`
