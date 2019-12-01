@@ -44,7 +44,8 @@ class CreateUpdateAsset extends Component {
     fetch(urlProviders)
     .then(response => response.json())
     .then(data => this.setState({
-      allProviders: data
+      allProviders: data,
+      providerId: data[0]["providerId"]
     }));
 
     if (this.state.mediaId !== "") {
@@ -135,7 +136,7 @@ class CreateUpdateAsset extends Component {
         body: JSON.stringify(asset)
       }
       const url = `${process.env.REACT_APP_BELL_SERVICE_URL}/bell/hidden/asset/${asset.media.mediaId}`;
-  
+
       function handleResponse(response) {
         return response.json().then(data => {
           if (!response.ok) {
