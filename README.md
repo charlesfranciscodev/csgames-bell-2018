@@ -16,6 +16,12 @@ Your task is to create a streaming platform (HTTP REST backend and web frontend)
 
 <img src="filters.png" height="400" width="400">
 
+## Features
+* Video Gallery
+* Video Filters
+* Video Search
+* User Profiles
+
 ## Setup
 In order for the frontend app to connect to the APIs, add a `client.env` file in the root folder of the project with the following variables:
 ```
