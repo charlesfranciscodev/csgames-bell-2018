@@ -76,6 +76,23 @@ Connect to the client
 
 `docker-compose -f docker-compose-dev.yml exec client /bin/sh`
 
+### Frontend Setup
+
+If you copied the repository, this step can be skipped as it is already done.
+To create the frontend app from scratch locally:
+
+Install [nvm](https://github.com/nvm-sh/nvm), then run the following commands.
+
+```shell
+# Install Node.js
+nvm install node
+# Install Create React App
+npm install create-react-app --global
+# Create the boilerplate
+cd client
+create-react-app .
+```
+
 ## Completed User Stories
 * [BP:3] As an operator, I can run a bash script that starts both the client and the server
 * [BP:8] As an extraterrestrial user, I can navigate through available assets
