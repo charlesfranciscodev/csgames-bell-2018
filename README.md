@@ -167,7 +167,7 @@ Response
   },
   "profileIds": ["4", "6", "7"],
   "providerId": "CTV",
-  "provider": 2345
+  "provider": 2345,
   "refreshRateInSeconds": 3,
   "title": "LazyTown song - Cooking By The Book"
 }
