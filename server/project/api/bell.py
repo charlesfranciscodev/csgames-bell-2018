@@ -58,7 +58,7 @@ def optional_authenticate(f):
 
 @bell_blueprint.route("/bell/authentication", methods=["POST"])
 def bell_authentication_post():
-    """Logs in the user"""
+    """Login for user(s)"""
     response = {}
     request_json = request.get_json()
 
