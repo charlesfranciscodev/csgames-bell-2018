@@ -1,11 +1,9 @@
-import sys
 import json
 import dateutil.parser
 
 from flask.cli import FlaskGroup
 
 from project import create_app, db
-from project.api.models import user_profile, asset_profile, provider_profile
 from project.api.models import User, Profile, Asset, Provider
 
 app = create_app()
@@ -27,14 +25,14 @@ def seed_db():
         users = json.load(f)
         for user in users:
             user_object = User()
-            user_object.user_id=user["id"]
+            user_object.user_id = user["id"]
             user_object.username = user["username"]
             user_object.hashed_password = user["hashedPassword"]
             user_object.birthdate = dateutil.parser.parse(user["birthdate"])
             for profile in user["profiles"]:
                 profile_id = int(profile["id"])
                 obj = Profile.query.filter_by(profile_id=profile_id).first()
-                if obj is None:
+                if not obj:
                     obj = Profile()
                     obj.profile_id = profile_id
                     obj.name = profile["name"]

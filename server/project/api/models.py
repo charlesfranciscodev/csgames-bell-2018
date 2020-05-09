@@ -4,7 +4,8 @@ import jwt
 from flask import current_app
 from project import db
 
-user_profile = db.Table("user_profile",
+user_profile = db.Table(
+    "user_profile",
     db.Column(
         "user_id", db.String(36),
         db.ForeignKey(
@@ -21,7 +22,8 @@ user_profile = db.Table("user_profile",
     )
 )
 
-asset_profile = db.Table("asset_profile",
+asset_profile = db.Table(
+    "asset_profile",
     db.Column(
         "media_id", db.String(11),
         db.ForeignKey(
@@ -38,7 +40,8 @@ asset_profile = db.Table("asset_profile",
     )
 )
 
-provider_profile = db.Table("provider_profile",
+provider_profile = db.Table(
+    "provider_profile",
     db.Column(
         "provider_id", db.Integer,
         db.ForeignKey(
@@ -124,6 +127,7 @@ class Profile(db.Model):
             "name": self.name
         }
         return profile_dict
+
 
 class Asset(db.Model):
     __tablename__ = "asset"

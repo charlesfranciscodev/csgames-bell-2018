@@ -45,7 +45,7 @@ class CreateUpdateAsset extends Component {
     .then(response => response.json())
     .then(data => this.setState({
       allProviders: data,
-      providerId: data[0]["providerId"]
+      providerId: data[0].providerId
     }));
 
     if (this.state.mediaId !== "") {

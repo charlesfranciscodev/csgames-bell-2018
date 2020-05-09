@@ -1,19 +1,17 @@
 import os
-import sys
 import hashlib
 import datetime
-import uuid
 import dateutil.parser
 
 from functools import wraps
 
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request
 
 from project.api.models import User, Profile, Asset, Provider
-from project.api.models import user_profile, asset_profile, provider_profile
+from project.api.models import asset_profile, provider_profile
 from project import db
 
-from sqlalchemy import or_, and_
+from sqlalchemy import or_
 
 bell_blueprint = Blueprint("bell", __name__)
 
@@ -120,7 +118,7 @@ def bell_assets():
 
     for asset in assets:
         response.append(asset.to_json())
-    
+
     return jsonify(response)
 
 
@@ -160,7 +158,7 @@ def bell_hidden_asset(media_id):
     if secret_key != os.environ["HEADER_SECRET_KEY"]:
         response["message"] = "Invalid header secret key"
         return jsonify(response), 401
-    
+
     keys = ["providerId", "title", "licensingWindow", "profileIds", "media"]
     for key in keys:
         if key not in request_json:
@@ -213,7 +211,7 @@ def bell_hidden_asset(media_id):
 
     asset.media_id = media["mediaId"]
     asset.title = request_json["title"]
-    
+
     asset.provider_id = int(provider_id)
     asset.duration_in_seconds = media["durationInSeconds"]
     asset.licensing_window_start = licensing_window_start
@@ -340,7 +338,7 @@ def bell_asset(user_id, media_id):
         return jsonify(response), 400
 
     # select currently logged in user
-    if user_id is None:
+    if not user_id:
         return jsonify(asset.to_json())
     user = User.query.filter_by(user_id=user_id).first()
 
@@ -375,13 +373,13 @@ def bell_logout():
 
 @bell_blueprint.route("/bell/profiles")
 def bell_profiles():
-    profiles = Profile.query.all();
+    profiles = Profile.query.all()
     response = [profile.to_json() for profile in profiles]
     return jsonify(response)
 
 
 @bell_blueprint.route("/bell/providers")
 def bell_providers():
-    providers = Provider.query.all();
+    providers = Provider.query.all()
     response = [provider.to_json() for provider in providers]
     return jsonify(response)

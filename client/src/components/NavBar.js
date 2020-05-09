@@ -28,7 +28,7 @@ class NavBar extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     let username = "";
     if (user) {
-      username = user["hashedCredentials"].split(":")[0];
+      username = user.hashedCredentials.split(":")[0];
     }
 
     return (
