@@ -48,7 +48,7 @@ Run the containers:
 
 `docker-compose -f docker-compose-dev.yml up`
 
-Create the database:
+Create the database tables:
 
 `docker-compose -f docker-compose-dev.yml exec server python manage.py recreate_db`
 
