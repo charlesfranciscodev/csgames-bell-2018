@@ -167,7 +167,7 @@ def bell_hidden_asset(media_id):
 
     provider_id = request_json["providerId"]
     provider = Provider.query.filter_by(provider_id=provider_id).first()
-    if provider is None:
+    if not provider:
         response["message"] = "Invalid provider id"
         return jsonify(response), 404
 
@@ -197,16 +197,14 @@ def bell_hidden_asset(media_id):
     asset = Asset.query.filter_by(media_id=media_id).first()
     create = request.method == "POST"
     if create:
-        if asset is None:
+        if not asset:
             asset = Asset()
             create = True
         else:
-            message = "Asset {} already exists".format(media["mediaId"])
-            response["message"] = message
+            response["message"] = "Asset {} already exists".format(media["mediaId"])
             return jsonify(response), 400
-    elif asset is None:
-        message = "Asset {} does not exist".format(media["mediaId"])
-        response["message"] = message
+    elif not asset:
+        response["message"] = "Asset {} does not exist".format(media["mediaId"])
         return jsonify(response), 400
 
     asset.media_id = media["mediaId"]
@@ -217,7 +215,7 @@ def bell_hidden_asset(media_id):
     asset.licensing_window_start = licensing_window_start
     asset.licensing_window_end = licensing_window_end
 
-    if (not create):
+    if not create:
         asset.profiles = []
     for prof_id in request_json["profileIds"]:
         profile = Profile.query.filter_by(profile_id=prof_id).first()
