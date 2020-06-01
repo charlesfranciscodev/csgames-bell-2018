@@ -1,5 +1,9 @@
 # CSGames Bell 2018 Web Competition
 
+Video Streaming Platform with React, Redux, Flask and Docker.
+
+Features: Video Gallery, Video Filters, Video Search and User Profiles
+
 This competition was part of the 2018 edition of the [CS Games](http://csgames.org), a collegiate competition that includes challenges from all aspects of computing.
 
 ## Competition Description
