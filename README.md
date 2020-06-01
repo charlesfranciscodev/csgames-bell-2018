@@ -1,6 +1,6 @@
 # CSGames Bell 2018 Web Competition
 
-Video Streaming Platform with React, Redux, Flask and Docker.
+Video Streaming Platform with React, Redux, Flask and Docker
 
 Features: Video Gallery, Video Filters, Video Search and User Profiles
 
