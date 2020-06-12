@@ -6,6 +6,8 @@ Features: Video Gallery, Video Filters, Video Search and User Profiles
 
 This competition was part of the 2018 edition of the [CS Games](http://csgames.org), a collegiate competition that includes challenges from all aspects of computing.
 
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fcharlesfranciscodev%2Fcsgames-bell-2018) ![](https://img.shields.io/badge/code%20style-flake8-black)
+
 ## Competition Description
 You are an extraterrestrial life form on Earth without any tools to properly integrate yourself. What's better than news shows and TV shows to open a conversation with humans?
 
